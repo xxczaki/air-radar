@@ -50,6 +50,7 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 	return (
 		<Main>
 			<Head>
+				<link rel="preconnect" href="https://api.mapbox.com"/>
 				<link href="https://api.mapbox.com/mapbox-gl-js/v0.54.1/mapbox-gl.css" rel="stylesheet"/>
 			</Head>
 			{!data ? (
