@@ -1,10 +1,10 @@
-import { NextApiRequest, NextApiResponse } from 'next'
+import {NextApiRequest, NextApiResponse} from 'next';
 
 import client from '../../middlewares/db';
 
 type Data = {
 	message: string;
-}
+};
 
 const createReport = async (request: NextApiRequest, response: NextApiResponse<Data>): Promise<void> => {
 	if (request.method === 'POST') {
@@ -17,10 +17,10 @@ const createReport = async (request: NextApiRequest, response: NextApiResponse<D
 			await db.collection(process.env.DB_COLLECTION ?? '').insertOne({name, content, owner, key});
 
 			response.status(201).json({message: 'OK'});
-		} catch (error) {
+		} catch {
 			response.status(500).json({message: 'Failed creating a new report. Please check the database status.'});
 		}
 	}
-}
+};
 
 export default createReport;

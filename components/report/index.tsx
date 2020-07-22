@@ -14,7 +14,7 @@ export const ReportContainer = styled.div`
 const Report = ({coords, current, forecast, sensor}: Response): JSX.Element => {
 	return (
 		<Crucial coords={coords} current={current} sensor={sensor}/>
-	)
-}
+	);
+};
 
 export default Report;

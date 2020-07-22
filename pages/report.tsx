@@ -8,7 +8,7 @@ import Report, {ReportContainer} from '../components/report';
 import {fetcher, Response} from '../utils/fetcher';
 
 const OpenMap = dynamic(
-	() => import('../components/report/map'),
+	async () => import('../components/report/map'),
 	{
 		ssr: false,
 		loading: () => <p>Loading map...</p>
@@ -16,7 +16,7 @@ const OpenMap = dynamic(
 );
 
 interface Props {
-	data: Response
+	data: Response;
 }
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
@@ -36,7 +36,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
 		}
 	} else {
 		lat = query?.lat as string | undefined;
-		lng = query?.lng as string | undefined
+		lng = query?.lng as string | undefined;
 	}
 
 	const data = await fetcher(lat, lng);
@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
 };
 
 const Index: NextPage<Props> = (props: Readonly<Props>) => {
-	const data = props.data;
+	const {data} = props;
 
 	return (
 		<Main>
@@ -53,26 +53,26 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 				<link rel="preconnect" href="https://api.mapbox.com"/>
 				<link href="https://api.mapbox.com/mapbox-gl-js/v0.54.1/mapbox-gl.css" rel="stylesheet"/>
 			</Head>
-			{!data ? (
-				<p>Loading...</p>
-			) : (
+			{data ? (
 				<ReportContainer>
-						<OpenMap
-							location={{
-								latitude: data.coords.latitude,
-								longitude: data.coords.longitude
-							}}
-							sensor={{
-								latitude: data.sensor.latitude as number,
-								longitude: data.sensor.longitude as number
-							}}
-							color={data.current.indexes[0].color as string}
-						/>
+					<OpenMap
+						location={{
+							latitude: data.coords.latitude,
+							longitude: data.coords.longitude
+						}}
+						sensor={{
+							latitude: data.sensor.latitude as number,
+							longitude: data.sensor.longitude as number
+						}}
+						color={data.current.indexes[0].color as string}
+					/>
 					<Report coords={data.coords} current={data.current} forecast={data?.forecast} sensor={data.sensor}/>
 				</ReportContainer>
+			) : (
+				<p>Loading...</p>
 			)}
 		</Main>
 	);
-}
+};
 
 export default Index;

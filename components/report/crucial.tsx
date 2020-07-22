@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {darken} from 'polished';
 import haversine from 'haversine';
+import {Except} from 'type-fest';
 
 import ExtLink from '../extlink';
 import {humanizeLevel} from '../../utils/humanize';
@@ -60,11 +61,11 @@ const Value = styled.div<BoxProps>`
 	}
 `;
 
-const Crucial = ({coords, current, sensor}: Omit<Response, 'forecast'>): JSX.Element => {
+const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.Element => {
 	const location = {
 		latitude: coords.latitude,
 		longitude: coords.longitude
-	}
+	};
 
 	return (
 		<Wrapper>
@@ -73,10 +74,10 @@ const Crucial = ({coords, current, sensor}: Omit<Response, 'forecast'>): JSX.Ele
 				<p>{current.indexes[0].description}</p>
 				<ValuesBox>
 					{current.values.map(element => (
-							<Value key={element.name} background={current.indexes[0].color}>
-								<p>{element.name}</p>
-								<h3>{element.value}</h3>
-							</Value>
+						<Value key={element.name} background={current.indexes[0].color}>
+							<p>{element.name}</p>
+							<h3>{element.value}</h3>
+						</Value>
 					))}
 				</ValuesBox>
 			</Box>
@@ -86,7 +87,7 @@ const Crucial = ({coords, current, sensor}: Omit<Response, 'forecast'>): JSX.Ele
 				<p>Distance: <b>{sensor.provider === 'airly' ? 'N/A' : `${Math.round((haversine(location, {latitude: sensor.latitude as number, longitude: sensor.longitude as number}) + Number.EPSILON) * 100) / 100} km`}</b></p>
 			</Box>
 		</Wrapper>
-	)
-}
+	);
+};
 
 export default Crucial;

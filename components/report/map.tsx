@@ -10,7 +10,7 @@ interface Props {
 	sensor: {
 		latitude: number;
 		longitude: number;
-	}
+	};
 	color: string;
 }
 
@@ -23,9 +23,9 @@ const OpenMap = ({location, sensor, color}: Props): JSX.Element => {
 		latitude: sensor.latitude ? (location.latitude + sensor.latitude) / 2 : location.latitude,
 		longitude: sensor.longitude ? (location.longitude + sensor.longitude) / 2 : location.longitude,
 		zoom: 10
-	  })
+	});
 
-	function redraw({project}: SVGRedrawOptions) {
+	const redraw = ({project}: SVGRedrawOptions) => {
 		const [locX, locY] = project([location.longitude, location.latitude]);
 
 		if (sensor.latitude && sensor.longitude) {
@@ -37,24 +37,24 @@ const OpenMap = ({location, sensor, color}: Props): JSX.Element => {
 					<circle cx={senX} cy={senY} r={4} fill={color}/>
 					<circle cx={locX} cy={locY} r={4} fill="#fff"/>
 				</>
-			)
+			);
 		}
 
 		return <circle cx={locX} cy={locY} r={4} fill="#fff"/>;
-	}
+	};
 
-return (
+	return (
 		<MapGL
 			{...viewport}
 			mapStyle="mapbox://styles/mapbox/dark-v10"
 			mapboxApiAccessToken={process.env.NEXT_PUBLIC_MAPBOX_TOKEN}
-			onViewportChange={viewport => setViewport(viewport)}
 			width="auto"
 			height="15rem"
+			onViewportChange={viewport => setViewport(viewport)}
 		>
-			<SVGOverlay redraw={redraw} />
+			<SVGOverlay redraw={redraw}/>
 		</MapGL>
-);
-}
+	);
+};
 
 export default OpenMap;

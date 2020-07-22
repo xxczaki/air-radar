@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {SimpleImg} from 'react-simple-img';
-import { useForm } from "react-hook-form";
-import { useRouter } from 'next/router';
+import {useForm} from 'react-hook-form';
+import {useRouter} from 'next/router';
 import {toast} from 'react-toastify';
 
 import Header from './header';
@@ -65,23 +65,23 @@ const About = (): JSX.Element => {
 
 			if (json.length === 0) {
 				toast.error('Location not found!', {
-					position: "bottom-right",
+					position: 'bottom-right',
 					autoClose: 2000,
 					hideProgressBar: false,
 					closeOnClick: true,
 					pauseOnHover: true,
-					progress: undefined,
-					});
+					progress: undefined
+				});
 			} else {
-				router.push(`/report?lat=${json[0].lat}&lng=${json[0].lon}`);
+				await router.push(`/report?lat=${json[0].lat}&lng=${json[0].lon}`);
 			}
 		} else {
 			const {getPosition} = await import('../utils/get-position');
 			const {coords} = await getPosition();
 
-			router.push(`/report?lat=${coords.latitude}&lng=${coords.longitude}`);
+			await router.push(`/report?lat=${coords.latitude}&lng=${coords.longitude}`);
 		}
-	}
+	};
 
 	return (
 		<>
@@ -89,19 +89,19 @@ const About = (): JSX.Element => {
 				<Box>
 					<h1>Air Radar</h1>
 					<Form onSubmit={handleSubmit(onSubmit)}>
-				<Label>Location (optional)</Label>
-				<Input ref={register()} type="text" name="location" aria-label="Location you want to check the air quality for" aria-required="false" placeholder="Times Square, New York"/>
-				<Button type="submit">Check</Button>
-			</Form>
+						<Label>Location (optional)</Label>
+						<Input ref={register()} type="text" name="location" aria-label="Location you want to check the air quality for" aria-required="false" placeholder="Times Square, New York"/>
+						<Button type="submit">Check</Button>
+					</Form>
 				</Box>
-					<Image
-						src={illustration}
-						placeholder="var(--background)"
-						// @ts-expect-error
-						draggable={false}
-						alt="Illustration"
-						height="13em"
-					/>
+				<Image
+					src={illustration}
+					placeholder="var(--background)"
+					// @ts-expect-error
+					draggable={false}
+					alt="Illustration"
+					height="13em"
+				/>
 			</Container>
 			<Divider/>
 			<Header>How it works?</Header>
@@ -112,6 +112,6 @@ const About = (): JSX.Element => {
 			<p>Furthermore, Air Radar is totally free and open-source. Try it out today!</p>
 		</>
 	);
-}
+};
 
 export default About;
