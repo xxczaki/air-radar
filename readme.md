@@ -1,38 +1,33 @@
-![Screenshot](screenshot.png)
+# Air Radar ☁️
 
-# [kepinski.me](https://kepinski.me)
+> Quickly check air quality in your area using trusted sources!
 
-> Personal website, built with React, Next.js & more 🚀
-
-[![Build Status](https://travis-ci.org/xxczaki/site.svg?branch=master)](https://travis-ci.org/xxczaki/site)
+[![Build Status](https://travis-ci.org/xxczaki/air-radar.svg?branch=master)](https://travis-ci.org/xxczaki/air-radar)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 [![style: styled-components](https://img.shields.io/badge/style-%F0%9F%92%85%20styled--components-orange.svg?colorB=daa357&colorA=db748e)](https://github.com/styled-components/styled-components)
-
-*The website targets the latest version of Chrome, Safari, and Firefox.
 
 ---
 
 ## Highlights
 
-- Blazing fast (Next.js + Incremental SSG)
-- Works offline (PWA)
-- 100% Responsive & Accessible
-- Written in TypeScript
-
-## Built with:
-
-**Main:**
-
-- [React](https://reactjs.org/)
-- [Next.js](https://nextjs.org/)
-- [Styled Components](https://styled-components.com/)
-
-**Additional:**
-
-- [React Simple Image](https://react-simple-img.now.sh) - image lazy loading
-- [NProgress](https://ricostacruz.com/nprogress/) - progress bar
+WIP
 
 ## Development
+
+The following environmental variables need to be provided:
+
+* `DB_URI` - MongoDB database URI.
+* `DB_USER` - Database username.
+* `DB_PASSWORD` - Database password.
+* `DB_NAME` - Database name.
+* `DB_COLLECTION` - Collection name.
+* `NEXT_PUBLIC_AIRLY_KEY` - [Airly API](https://developer.airly.eu/) key.
+* `NEXT_PUBLIC_WAQI_KEY` - [Air Quality Open Data Platform API](https://aqicn.org/api/) token.
+* `NEXT_PUBLIC_MAPBOX_TOKEN` - [Mapbox](https://www.mapbox.com/) API token.
+
+You can use the [`.env.local`](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables) file for this.
+
+---
 
 > Hosted with [Vercel ▲](https://vercel.com)
 
@@ -47,17 +42,24 @@ $ npm run build
 $ npm test
 ```
 
-## Acknowledgments
+## TODO
 
-I took some inspiration from the following, truly amazing personal sites:
-
-- [paco.im](https://paco.im)
-- [gabrielvaldivia.com](https://www.gabrielvaldivia.com/)
-- [robhope.com](https://robhope.com/)
-- [zcole.me](http://zcole.me/)
+- [x] Home page
+	- [ ] Multiple data sources
+		- [x] Airly
+		- [ ] World Air Quality Index
+		- [ ] ?
+	- [ ] Show the amount of reports created
+- [ ] Reports page
+    - [x] Map
+	- [ ] Charts
+	- [x] Sensor information
+		- [x] Provider
+		- [x] Location
+	- [ ] Share functionality
+    	- [ ] Generate Open Graph images
+	- [ ] Information about WHO standards
 
 ### License
 
 MIT
-
-<a href="https://www.browserstack.com/"><img src="https://imgur.com/l3iy9C6.png" width="512" alt="Sponsored by BrowserStack"></a>

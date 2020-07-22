@@ -14,7 +14,8 @@ const plugins = [
 	['babel-plugin-styled-components', {
 		ssr: true,
 		pure: true
-	}]
+	}],
+	'babel-plugin-polished'
 ]
 
 module.exports = {presets, plugins};

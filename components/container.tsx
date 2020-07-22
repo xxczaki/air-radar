@@ -8,11 +8,9 @@ import Nav from './nav';
 import NavLink from './navlink';
 import Footer from './footer';
 
-import flashOutline from '../public/images/flash-outline.svg';
+import cloudOutline from '../public/images/cloud-outline.svg';
 import email from '../public/images/email.svg';
-import logoTwitter from '../public/images/logo-twitter.svg';
 import logoGitHub from '../public/images/logo-github.svg';
-import logoInstagram from '../public/images/logo-instagram.svg';
 
 interface Props {
 	children: React.ReactNode;
@@ -72,11 +70,10 @@ const Container = ({children}: Props): JSX.Element => (
 		<Header>
 			<Wrapper>
 				<Link href="/">
-					<Logo src={flashOutline} draggable={false} alt="Flash"/>
+					<Logo src={cloudOutline} draggable={false} alt="Flash"/>
 				</Link>
 				<Nav>
 					<NavLink title="Home" href="/"/>
-					<NavLink title="Projects" href="/projects"/>
 				</Nav>
 			</Wrapper>
 		</Header>
@@ -87,14 +84,8 @@ const Container = ({children}: Props): JSX.Element => (
 				<Box href="mailto:a@kepinski.me" target="_blank" rel="noopener noreferrer" aria-label="Email">
 					<Image src={email} width="2em" height="2em" placeholder="var(--gray)" alt="Email"/>
 				</Box>
-				<Box href="https://twitter.com/dokwadratu" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-					<Image src={logoTwitter} width="2em" height="2em" placeholder="var(--gray)" alt="Twitter"/>
-				</Box>
-				<Box href="https://github.com/xxczaki" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+				<Box href="https://github.com/xxczaki/air-radar" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
 					<Image src={logoGitHub} width="2em" height="2em" placeholder="var(--gray)" alt="GitHub"/>
-				</Box>
-				<Box href="https://instagram.com/akepinski" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-					<Image src={logoInstagram} width="2em" height="2em" placeholder="var(--gray)" alt="Instagram"/>
 				</Box>
 			</Social>
 		</Footer>

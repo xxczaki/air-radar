@@ -3,16 +3,18 @@ import {AppProps} from 'next/app';
 import Head from 'next/head';
 import Router from 'next/router';
 import {createGlobalStyle} from 'styled-components';
+import {ToastContainer} from 'react-toastify';
 import debounce from 'lodash.debounce';
 import nprogress from 'nprogress';
 
 import Container from '../components/container';
 
-// Fonts
+// Assets
 import InterRegularWoff from '../public/fonts/inter-v1-latin-regular.woff';
 import InterRegularWoff2 from '../public/fonts/inter-v1-latin-regular.woff2';
 import InterBoldWoff from '../public/fonts/inter-v1-latin-800.woff';
 import InterBoldWoff2 from '../public/fonts/inter-v1-latin-800.woff2';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 const GlobalStyle = createGlobalStyle`
 	:root {
@@ -116,8 +118,9 @@ Router.events.on('routeChangeError', () => {
 const myApp = ({Component, pageProps}: Readonly<AppProps>): JSX.Element => (
 	<>
 		<GlobalStyle/>
+		<ToastContainer/>
 		<Head>
-			<title>Antoni Kepinski</title>
+			<title>Air Radar ☁️</title>
 		</Head>
 		<Container>
 			<Component {...pageProps}/>

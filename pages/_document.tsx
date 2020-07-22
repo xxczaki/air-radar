@@ -34,20 +34,20 @@ export default class MyDocument extends Document {
 				<Head>
 					<meta charSet="utf-8"/>
 					<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-					<meta name="description" content="Hi, my name is Antoni Kepinski and I like programming, especially in JavaScript & Rust. Come and visit my site!"/>
+					<meta name="description" content="Check air quality in your area in just one click. Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
 					<meta name="theme-color" content="#131415"/>
 					<meta name="msapplication-TileColor" content="#131415"/>
 					<meta name="apple-mobile-web-app-capable" content="yes"/>
 					<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 					<meta name="twitter:card" content="summary_large_image"/>
 					<meta name="twitter:site" content="@dokwadratu"/>
-					<meta name="twitter:title" content="Antoni Kepinski"/>
-					<meta name="twitter:description" content="Hi, my name is Antoni Kepinski and I like programming, especially in JavaScript & Rust. Come and visit my site!"/>
+					<meta name="twitter:title" content="Air Radar ☁️"/>
+					<meta name="twitter:description" content="Check air quality in your area in just one click. Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
 					<meta name="twitter:image" content="https://og.kepinski.me/Antoni%20Kepinski.png?theme=dark&md=0&fontSize=125px&images=https%3A%2F%2Fkepinski.me%2Fimages%2Fflash-outline.svg"/>
-					<meta property="og:title" content="Antoni Kepinski"/>
-					<meta property="og:site_name" content="Antoni Kepinski"/>
-					<meta property="og:url" content="https://kepinski.me"/>
-					<meta property="og:description" content="Hi, my name is Antoni Kepinski and I like programming, especially in JavaScript & Rust. Come and visit my site!"/>
+					<meta property="og:title" content="Air Radar ☁️"/>
+					<meta property="og:site_name" content="Air Radar ☁️"/>
+					<meta property="og:url" content="https://air-radar.now.sh"/>
+					<meta property="og:description" content="Check air quality in your area in just one click. Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
 					<meta property="og:type" content="website"/>
 					<meta property="og:image" content="https://og.kepinski.me/Antoni%20Kepinski.png?theme=dark&md=0&fontSize=125px&images=https%3A%2F%2Fkepinski.me%2Fimages%2Fflash-outline.svg"/>
 					<link rel="manifest" href="/manifest.json"/>
@@ -137,14 +137,10 @@ export default class MyDocument extends Document {
 						rel="apple-touch-startup-image"
 						href="/apple-splash-1136-640.png"
 						media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"/>
-					<link rel="preconnect" href="https://changelog.com"/>
 				</Head>
 				<body>
 					<Main/>
 					<NextScript/>
-					{/* Simple Analytics */}
-					<script async defer src="https://sa.kepinski.me/app.js"/>
-					<noscript><img src="https://sa.kepinski.me/image.gif" alt=""/></noscript>
 				</body>
 			</html>
 		);
