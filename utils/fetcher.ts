@@ -23,6 +23,7 @@ interface Data {
 		percent: number;
 		averaging: string;
 	}>>;
+	time: string;
 }
 export interface Response {
 	coords: {
@@ -96,7 +97,8 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Re
 				current: {
 					values,
 					indexes,
-					standards: []
+					standards: [],
+					time: new Date(data.data.time.s).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false})
 				},
 				sensor
 			};
@@ -121,7 +123,10 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Re
 			},
 			current: {
 				...data.current,
-				values: data.current.values.filter((element: {name: string; value: number}) => names[element.name])
+				values: data.current.values.filter((element: {name: string; value: number}) => names[element.name]).map((element: {name: string; value: number}) => {
+					return {name: names[element.name], value: element.value};
+				}),
+				time: new Date(data.current.fromDateTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false})
 			},
 			forecast: data.forecast,
 			sensor: {
