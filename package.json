@@ -25,8 +25,8 @@
             "import/no-unassigned-import": "off",
             "import/extensions": "off",
             "unicorn/string-content": "off",
-			"no-mixed-operators": "off",
-			"node/no-unsupported-features/es-syntax": "off",
+            "no-mixed-operators": "off",
+            "node/no-unsupported-features/es-syntax": "off",
             "@typescript-eslint/prefer-readonly-parameter-types": "off",
             "@typescript-eslint/restrict-template-expressions": "off"
         },
@@ -38,7 +38,7 @@
         "extensions": [
             "tsx",
             "ts"
-		],
+        ],
         "ignores": [
             "babel.config.js",
             "next.config.js",
@@ -56,12 +56,12 @@
         "next": "^9.4.4",
         "nprogress": "^0.2.0",
         "polished": "^3.6.5",
+        "rc-tooltip": "^4.2.1",
         "react": "16.13.1",
         "react-chartjs-2": "^2.9.0",
         "react-dom": "16.13.1",
         "react-hook-form": "^6.0.8",
         "react-map-gl": "^5.2.7",
-        "react-popper-tooltip": "^3.1.0",
         "react-simple-img": "^2.3.9",
         "react-toastify": "^6.0.8",
         "styled-components": "^5.1.1",
