@@ -23,6 +23,7 @@ const Button = styled.button`
 	border-radius: 7px;
 	overflow: hidden;
 	appearance: button;
+	height: 2.5em;
 
 	&:hover {
 		opacity: 0.8;
