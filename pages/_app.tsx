@@ -15,6 +15,7 @@ import InterRegularWoff2 from '../public/fonts/inter-v1-latin-regular.woff2';
 import InterBoldWoff from '../public/fonts/inter-v1-latin-800.woff';
 import InterBoldWoff2 from '../public/fonts/inter-v1-latin-800.woff2';
 import 'react-toastify/dist/ReactToastify.min.css';
+import 'rc-tooltip/assets/bootstrap.css';
 
 const GlobalStyle = createGlobalStyle`
 	:root {
