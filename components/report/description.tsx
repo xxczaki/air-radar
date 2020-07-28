@@ -7,7 +7,7 @@ interface Props {
 }
 
 const Wrapper = styled.div`
-	max-width: 20em;
+	text-align: left;
 `;
 
 const getDescription = (name: string) => {
@@ -25,7 +25,7 @@ const getDescription = (name: string) => {
 		case 'O₃':
 			return 'Ozone occurs both in the Earth\'s upper atmosphere and at ground level. It can be good or bad, depending on where it is found. People most at risk from breathing air containing ozone include people with asthma, children, older adults, and people who are active outdoors, especially outdoor workers.';
 		case 'H₂S':
-			return 'Hydrogen sulfide gas may be encountered during production of oil and gas, sewage and septic pits, in the fishing industry and farming. The H₂S reacts with the haemoglobins in the blood and reduces the body’s oxygen supply.';
+			return 'Hydrogen sulfide gas may be encountered during production of oil and gas, sewage and septic pits, in the fishing industry and farming. The H₂S reacts with the hemoglobins in the blood and reduces the body’s oxygen supply.';
 		case 'CO':
 			return 'Carbon Monoxide is found in fumes produced any time you burn fuel in cars or trucks, small engines, stoves, lanterns, grills, fireplaces, gas ranges, or furnaces. CO Symptoms are often described as “flu-like”.';
 		default:
