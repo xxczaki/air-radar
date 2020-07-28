@@ -33,7 +33,6 @@ export default class MyDocument extends Document {
 			<html lang="en">
 				<Head>
 					<meta charSet="utf-8"/>
-					<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 					<meta name="description" content="Check air quality in your area in just one click. Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
 					<meta name="theme-color" content="#131415"/>
 					<meta name="msapplication-TileColor" content="#131415"/>
