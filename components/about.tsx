@@ -12,6 +12,8 @@ import {
 	Input,
 	Label
 } from './form';
+import Details from './details';
+import ExtLink from './extlink';
 
 import illustration from '../public/images/undraw-illustration.svg';
 
@@ -110,6 +112,34 @@ const About = (): JSX.Element => {
 				Air Radar uses 2 trusted data sources to ensure that you will get the latest and most accurate data possible.
 			</p>
 			<p>Furthermore, Air Radar is totally free and open-source. Try it out today!</p>
+			<Header>FAQ</Header>
+			<Details>
+				<summary>What is the data sources priority?</summary>
+				<p>Air Radar will attempt to obtain data from <ExtLink href="https://airly.eu/" target="_blank" rel="noopener noreferrer">Airly</ExtLink> first. If without success, <ExtLink href="https://aqicn.org/" target="_blank" rel="noopener noreferrer">World Air Quality Index</ExtLink> will be used.</p>
+			</Details>
+			<Details>
+				<summary>Where do the pollutant details come from?</summary>
+				<p>Norms and most details come from <ExtLink href="https://who.int" target="_blank" rel="noopener noreferrer">World Health Organization</ExtLink>. Some was also taken from <ExtLink href="https://www.epa.gov/" target="_blank" rel="noopener noreferrer">United States Environmental Protection Agency</ExtLink>.</p>
+			</Details>
+			<Details>
+				<summary>How is the distance between the sensor and my location calculated?</summary>
+				<p>We use <ExtLink href="https://en.wikipedia.org/wiki/Vincenty%27s_formulae" target="_blank" rel="noopener noreferrer">Vincenty&apos;s formulae</ExtLink> to ensure the highest accuracy.</p>
+			</Details>
+			<Details>
+				<summary>Does this tool collect any personal data?</summary>
+				<p>No, Air Radar does not collect or store any private information, such as your IP address. Our code is also fully open-source.</p>
+				<p>However, we use some third-party services, which might do so. You can check their privacy policies below:</p>
+				<ul>
+					<li><ExtLink href="https://airly.eu/docs/pp-en.pdf" target="_blank" rel="noopener noreferrer">Airly</ExtLink></li>
+					<li><ExtLink href="https://aqicn.org/privacy" target="_blank" rel="noopener noreferrer">World Air Quality Index</ExtLink></li>
+					<li><ExtLink href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">Nominatim (part of OpenStreetMap Foundation)</ExtLink></li>
+					<li><ExtLink href="https://www.mapbox.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Mapbox</ExtLink></li>
+				</ul>
+			</Details>
+			<Details>
+				<summary>Who is the creator of this service?</summary>
+				<p>Air Radar was created by <ExtLink href="https://kepinski.me" target="_blank" rel="noopener noreferrer">Antoni Kepinski</ExtLink>, a young developer from Poland, with help of some amazing open-source contributors.</p>
+			</Details>
 		</>
 	);
 };
