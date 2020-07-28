@@ -47,7 +47,7 @@ $ npm test
 - [x] Home page
 	- [ ] Multiple data sources
 		- [x] Airly
-		- [ ] World Air Quality Index
+		- [x] World Air Quality Index
 		- [ ] ?
 	- [ ] Show the amount of reports created
 - [ ] Reports page
@@ -56,9 +56,10 @@ $ npm test
 	- [x] Sensor information
 		- [x] Provider
 		- [x] Location
+		- [x] Distance
 	- [ ] Share functionality
     	- [ ] Generate Open Graph images
-	- [ ] Information about WHO standards
+	- [x] Information about WHO standards
 
 ### License
 
