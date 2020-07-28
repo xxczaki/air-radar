@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import {darken} from 'polished';
+// @ts-expect-error
 import LatLon from 'geodesy/latlon-vincenty.js';
 import {Tooltip} from 'react-tippy';
 import {Except} from 'type-fest';
