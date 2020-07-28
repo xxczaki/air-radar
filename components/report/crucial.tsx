@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import {darken} from 'polished';
-import haversine from 'haversine';
-import Tooltip from 'rc-tooltip';
+import LatLon from 'geodesy/latlon-vincenty.js';
+import {Tooltip} from 'react-tippy';
 import {Except} from 'type-fest';
 
 import ExtLink from '../extlink';
@@ -64,10 +64,8 @@ const Value = styled.div<BoxProps>`
 `;
 
 const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.Element => {
-	const location = {
-		latitude: coords.latitude,
-		longitude: coords.longitude
-	};
+	const location = new LatLon(coords.latitude, coords.longitude);
+	const _sensor = new LatLon(sensor.latitude as number, sensor.longitude as number);
 
 	return (
 		<Wrapper>
@@ -76,7 +74,14 @@ const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.E
 				<p>{current.indexes[0].description}</p>
 				<ValuesBox>
 					{current.values.map(element => (
-						<Tooltip key={element.name} placement="top" overlay={<Description name={element.name} value={element.value}/>}>
+						<Tooltip
+							key={element.name}
+							interactive
+							arrow
+							position="top"
+							popperOptions={{positionFixed: true}}
+							html={<Description name={element.name} value={element.value}/>}
+						>
 							<Value background={current.indexes[0].color}>
 								<p>{element.name}</p>
 								<h3>{element.value}</h3>
@@ -89,7 +94,7 @@ const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.E
 				<h1>Sensor information</h1>
 				<p>Provider: <ExtLink href={sensor.provider === 'airly' ? 'https://map.airly.eu' : 'https://aqicn.org/'}><b>{sensor.provider === 'airly' ? 'Airly' : 'World Air Quality Index'}</b></ExtLink></p>
 				<p>Result from: <b>{current.time}</b></p>
-				<p>Distance: <b>{sensor.provider === 'airly' ? 'N/A' : `${Math.round((haversine(location, {latitude: sensor.latitude as number, longitude: sensor.longitude as number}) + Number.EPSILON) * 100) / 100} km`}</b></p>
+				<p>Distance: <b>{sensor.provider === 'airly' ? 'N/A' : `${(location.distanceTo(_sensor) / 1000).toFixed(1)} km`}</b></p>
 			</Box>
 		</Wrapper>
 	);
