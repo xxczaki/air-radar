@@ -28,5 +28,5 @@ const nextConfig = {
 	}
 };
 
-module.exports = withOptimizedImages((withOffline(nextConfig));
+module.exports = withOptimizedImages((withOffline(nextConfig)));
 
