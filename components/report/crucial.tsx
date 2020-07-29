@@ -4,6 +4,7 @@ import {darken} from 'polished';
 // @ts-expect-error
 import LatLon from 'geodesy/latlon-vincenty.js';
 import {Tooltip} from 'react-tippy';
+// @ts-expect-error
 import useTranslation from 'next-translate/useTranslation';
 import {Except} from 'type-fest';
 

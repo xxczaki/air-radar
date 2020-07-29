@@ -1,7 +1,9 @@
 import React from 'react';
+// @ts-expect-error
 import Link from 'next-translate/Link';
 import styled from 'styled-components';
 import {SimpleImg} from 'react-simple-img';
+// @ts-expect-error
 import useTranslation from 'next-translate/useTranslation';
 
 import Logo from './logo';
