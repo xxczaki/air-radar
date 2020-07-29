@@ -17,6 +17,7 @@ export const updateUnit = selector({
 
 		return text;
 	},
+	// @ts-expect-error
 	set: ({set}, newValue) => set(unit, newValue)
 });
 
@@ -27,5 +28,6 @@ export const updateLanguage = selector({
 
 		return text;
 	},
+	// @ts-expect-error
 	set: ({set}, newValue) => set(language, newValue)
 });
