@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import {SimpleImg} from 'react-simple-img';
 import {useForm} from 'react-hook-form';
-import {useRouter} from 'next/router';
+import router from 'next-translate/Router';
 import {toast} from 'react-toastify';
+import useTranslation from 'next-translate/useTranslation';
 
 import Header from './header';
 import {
@@ -58,7 +59,7 @@ const Divider = styled.hr`
 
 const About = (): JSX.Element => {
 	const {register, handleSubmit} = useForm<FormData>();
-	const router = useRouter();
+	const {t} = useTranslation();
 
 	const onSubmit = async (data: FormData) => {
 		if (data.location) {
@@ -66,7 +67,7 @@ const About = (): JSX.Element => {
 			const json = await response.json();
 
 			if (json.length === 0) {
-				toast.error('Location not found!', {
+				toast.error(t('home:location-error'), {
 					position: 'bottom-right',
 					autoClose: 2000,
 					hideProgressBar: false,
@@ -75,13 +76,13 @@ const About = (): JSX.Element => {
 					progress: undefined
 				});
 			} else {
-				await router.push(`/report?lat=${json[0].lat}&lng=${json[0].lon}`);
+				await router.replaceI18n(`/report?lat=${json[0].lat}&lng=${json[0].lon}`);
 			}
 		} else {
 			const {getPosition} = await import('../utils/get-position');
 			const {coords} = await getPosition();
 
-			await router.push(`/report?lat=${coords.latitude}&lng=${coords.longitude}`);
+			await router.replaceI18n(`/report?lat=${coords.latitude}&lng=${coords.longitude}`);
 		}
 	};
 
@@ -91,9 +92,9 @@ const About = (): JSX.Element => {
 				<Box>
 					<h1>Air Radar</h1>
 					<Form onSubmit={handleSubmit(onSubmit)}>
-						<Label>Location (optional)</Label>
-						<Input ref={register()} type="text" name="location" aria-label="Location you want to check the air quality for" aria-required="false" placeholder="Times Square, New York"/>
-						<Button type="submit">Check</Button>
+						<Label>{t('home:location')}</Label>
+						<Input ref={register()} type="text" name="location" aria-label={t('home:location-label')} aria-required="false" placeholder="Times Square, New York"/>
+						<Button type="submit">{t('home:check-button')}</Button>
 					</Form>
 				</Box>
 				<Image
@@ -101,44 +102,41 @@ const About = (): JSX.Element => {
 					placeholder="var(--background)"
 					// @ts-expect-error
 					draggable={false}
-					alt="Illustration"
+					alt={t('home:illustration-label')}
 					height="13em"
 				/>
 			</Container>
 			<Divider/>
-			<Header>How it works?</Header>
-			<p>
-				Click the button below to get information about air quality from the sensor closest to you. You can also enter a location manually.
-				Air Radar uses 2 trusted data sources to ensure that you will get the latest and most accurate data possible.
-			</p>
-			<p>Furthermore, Air Radar is totally free and open-source. Try it out today!</p>
+			<Header>{t('home:how-it-works')}</Header>
+			<p>{t('home:how-it-works-description1')}</p>
+			<p>{t('home:how-it-works-description2')}</p>
 			<Header>FAQ</Header>
 			<Details>
-				<summary>What is the data sources priority?</summary>
-				<p>Air Radar will attempt to obtain data from <ExtLink href="https://airly.eu/" target="_blank" rel="noopener noreferrer">Airly</ExtLink> first. If without success, <ExtLink href="https://aqicn.org/" target="_blank" rel="noopener noreferrer">World Air Quality Index</ExtLink> will be used.</p>
+				<summary>{t('home:faq.1.q')}</summary>
+				<p>{t('home:faq.1.a.1')} <ExtLink href="https://airly.eu/" target="_blank" rel="noopener noreferrer">Airly</ExtLink> {t('home:faq.1.a.2')} <ExtLink href="https://aqicn.org/" target="_blank" rel="noopener noreferrer">World Air Quality Index</ExtLink> {t('home:faq.1.a.3')}</p>
 			</Details>
 			<Details>
-				<summary>Where do the pollutant details come from?</summary>
-				<p>Norms and most details come from <ExtLink href="https://who.int" target="_blank" rel="noopener noreferrer">World Health Organization</ExtLink>. Some was also taken from <ExtLink href="https://www.epa.gov/" target="_blank" rel="noopener noreferrer">United States Environmental Protection Agency</ExtLink>.</p>
+				<summary>{t('home:faq.2.q')}</summary>
+				<p>{t('home:faq.2.a.1')} <ExtLink href="https://who.int" target="_blank" rel="noopener noreferrer">World Health Organization</ExtLink>. {t('home:faq.2.a.2')} <ExtLink href="https://www.epa.gov/" target="_blank" rel="noopener noreferrer">United States Environmental Protection Agency</ExtLink>.</p>
 			</Details>
 			<Details>
-				<summary>How is the distance between the sensor and my location calculated?</summary>
-				<p>We use <ExtLink href="https://en.wikipedia.org/wiki/Vincenty%27s_formulae" target="_blank" rel="noopener noreferrer">Vincenty&apos;s formulae</ExtLink> to ensure the highest accuracy.</p>
+				<summary>{t('home:faq.3.q')}</summary>
+				<p>{t('home:faq.3.a.1')} <ExtLink href={t('home:faq.3.a.3')} target="_blank" rel="noopener noreferrer">{t('home:faq.3.a.2')}</ExtLink> {t('home:faq.3.a.4')}</p>
 			</Details>
 			<Details>
-				<summary>Does this tool collect any personal data?</summary>
-				<p>No, Air Radar does not collect or store any private information, such as your IP address. Our code is also fully open-source.</p>
-				<p>However, we use some third-party services, which might do so. You can check their privacy policies below:</p>
+				<summary>{t('home:faq.4.q')}</summary>
+				<p>{t('home:faq.4.a.1')}</p>
+				<p>{t('home:faq.4.a.2')}</p>
 				<ul>
 					<li><ExtLink href="https://airly.eu/docs/pp-en.pdf" target="_blank" rel="noopener noreferrer">Airly</ExtLink></li>
 					<li><ExtLink href="https://aqicn.org/privacy" target="_blank" rel="noopener noreferrer">World Air Quality Index</ExtLink></li>
-					<li><ExtLink href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">Nominatim (part of OpenStreetMap Foundation)</ExtLink></li>
+					<li><ExtLink href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">Nominatim ({t('home:faq.4.a.3')})</ExtLink></li>
 					<li><ExtLink href="https://www.mapbox.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Mapbox</ExtLink></li>
 				</ul>
 			</Details>
 			<Details>
-				<summary>Who is the creator of this service?</summary>
-				<p>Air Radar was created by <ExtLink href="https://kepinski.me" target="_blank" rel="noopener noreferrer">Antoni Kepinski</ExtLink>, a young developer from Poland, with help of some amazing open-source contributors.</p>
+				<summary>{t('home:faq.5.q')}</summary>
+				<p>{t('home:faq.5.a.1')} <ExtLink href="https://kepinski.me" target="_blank" rel="noopener noreferrer">{t('home:faq.5.a.2')}</ExtLink>{t('home:faq.5.a.3')}</p>
 			</Details>
 		</>
 	);

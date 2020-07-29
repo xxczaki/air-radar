@@ -4,8 +4,8 @@
 	"description": "Quickly check air quality in your area using trusted sources!",
 	"private": true,
 	"scripts": {
-		"build": "next build",
-		"dev": "next dev",
+		"build": "next-translate && next build",
+		"dev": "next-translate && next dev",
 		"start": "next start",
 		"test": "xo && stylelint './**/*.ts'"
 	},
@@ -40,6 +40,7 @@
 			"ts"
 		],
 		"ignores": [
+			"pages",
 			"babel.config.js",
 			"next.config.js",
 			"public/embed.js"
@@ -55,16 +56,19 @@
 		"mongodb": "^3.5.9",
 		"nanoid": "^3.1.11",
 		"next": "^9.5.0",
+		"next-translate": "^0.17.1",
 		"nprogress": "^0.2.0",
 		"polished": "^3.6.5",
 		"react": "16.13.1",
 		"react-chartjs-2": "^2.9.0",
 		"react-dom": "16.13.1",
 		"react-hook-form": "^6.1.2",
+		"react-loading-skeleton": "^2.1.1",
 		"react-map-gl": "^5.2.7",
 		"react-simple-img": "^2.3.9",
 		"react-tippy": "^1.4.0",
 		"react-toastify": "^6.0.8",
+		"recoil": "0.0.10",
 		"styled-components": "^5.1.1",
 		"swr": "^0.2.3"
 	},
@@ -88,6 +92,7 @@
 		"imagemin-svgo": "^8.0.0",
 		"next-offline": "^5.0.2",
 		"next-optimized-images": "^2.6.2",
+		"redux-devtools-extension": "^2.13.8",
 		"stylelint": "^13.6.1",
 		"stylelint-config-recommended": "^3.0.0",
 		"type-fest": "^0.16.0",

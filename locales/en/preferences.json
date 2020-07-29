@@ -1,0 +1,10 @@
+{
+	"header": "Preferences",
+	"language": "Language:",
+	"unit": {
+		"title": "Unit:",
+		"km": "kilometers",
+		"m": "meters",
+		"mi": "miles"
+	}
+}

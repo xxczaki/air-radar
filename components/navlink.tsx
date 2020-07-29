@@ -1,11 +1,12 @@
 import React from 'react';
 import {useRouter} from 'next/router';
-import Link from 'next/link';
+import Link from 'next-translate/Link';
 import styled from 'styled-components';
 
 interface Props {
 	title: string;
 	href: string;
+	lang: string;
 }
 
 interface WrapperProps {
@@ -29,11 +30,11 @@ const Wrapper = styled.a<WrapperProps>`
 	cursor: pointer;
 `;
 
-const NavLink = ({title, href}: Props): JSX.Element => {
+const NavLink = ({title, href, lang}: Props): JSX.Element => {
 	const router = useRouter();
 
 	return (
-		<Link href={href}>
+		<Link href={href} lang={lang}>
 			<Wrapper active={router.pathname === href}>{title}</Wrapper>
 		</Link>
 	);

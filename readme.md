@@ -60,6 +60,7 @@ $ npm test
 	- [ ] Share functionality
     	- [ ] Generate Open Graph images
 	- [x] Information about WHO standards
+- [ ] i18n **WIP**
 
 ### License
 

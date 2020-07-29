@@ -1,0 +1,10 @@
+{
+	"header": "Preferencje",
+	"language": "Język:",
+	"unit": {
+		"title": "Jednostka:",
+		"km": "kilometry",
+		"m": "metry",
+		"mi": "mile"
+	}
+}

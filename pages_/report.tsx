@@ -2,7 +2,9 @@ import React from 'react';
 import {NextPage, GetServerSideProps} from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import Skeleton from 'react-loading-skeleton';
 
+import Container from '../components/container';
 import Main from '../components/main';
 import Report, {ReportContainer} from '../components/report';
 import {fetcher, Response} from '../utils/fetcher';
@@ -11,7 +13,7 @@ const OpenMap = dynamic(
 	async () => import('../components/report/map'),
 	{
 		ssr: false,
-		loading: () => <p>Loading map...</p>
+		loading: () => <Skeleton height="15rem"/>
 	}
 );
 
@@ -48,30 +50,32 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 	const {data} = props;
 
 	return (
-		<Main>
-			<Head>
-				<link rel="preconnect" href="https://api.mapbox.com"/>
-				<link href="https://api.mapbox.com/mapbox-gl-js/v0.54.1/mapbox-gl.css" rel="stylesheet"/>
-			</Head>
-			{data ? (
-				<ReportContainer>
-					<OpenMap
-						location={{
-							latitude: data.coords.latitude,
-							longitude: data.coords.longitude
-						}}
-						sensor={{
-							latitude: data.sensor.latitude as number,
-							longitude: data.sensor.longitude as number
-						}}
-						color={data.current.indexes[0].color as string}
-					/>
-					<Report coords={data.coords} current={data.current} forecast={data?.forecast} sensor={data.sensor}/>
-				</ReportContainer>
-			) : (
-				<p>Loading...</p>
-			)}
-		</Main>
+		<Container>
+			<Main>
+				<Head>
+					<link rel="preconnect" href="https://api.mapbox.com"/>
+					<link href="https://api.mapbox.com/mapbox-gl-js/v0.54.1/mapbox-gl.css" rel="stylesheet"/>
+				</Head>
+				{data ? (
+					<ReportContainer>
+						<OpenMap
+							location={{
+								latitude: data.coords.latitude,
+								longitude: data.coords.longitude
+							}}
+							sensor={{
+								latitude: data.sensor.latitude as number,
+								longitude: data.sensor.longitude as number
+							}}
+							color={data.current.indexes[0].color as string}
+						/>
+						<Report coords={data.coords} current={data.current} forecast={data?.forecast} sensor={data.sensor}/>
+					</ReportContainer>
+				) : (
+					<p>Loading...</p>
+				)}
+			</Main>
+		</Container>
 	);
 };
 

@@ -1,0 +1,52 @@
+{
+	"location": "Lokalizacja (opcjonalnie)",
+	"location-error": "Lokalizacja nie została znaleziona",
+	"location-label": "Lokalizacja, dla której chcesz sprawdzić jakość powietrza",
+	"check-button": "Sprawdź",
+	"illustration-label": "Ilustracja",
+	"how-it-works": "Jak to działa?",
+	"how-it-works-description1": "Kliknij przycisk powyżej, aby otrzymać informacje na temat jakości powietrza w pobliżu. Możesz również ręcznie wprowadzić lokalizację. Air Radar korzysta z 2 zaufanych źródeł danych, aby zapewnić najnowsze i najbardziej dokładne informacje.",
+	"how-it-works-description2": "Ponadto, Air Radar jest kompletnie bezpłatny, a jego kod otwartoźródłowy. Wypróbuj go teraz!",
+	"faq": {
+		"1": {
+			"q": "Jaki jest priorytet źródeł danych?",
+			"a": {
+				"1": "Air Radar spróbuje najpierw pozyskać dane z",
+				"2": "Jeżeli bez powodzenia,",
+				"3": "zostanie użyte."
+			}
+		},
+		"2": {
+			"q": "Skąd pochodzą informacje odnośnie zanieczyszczających cząstek?",
+			"a": {
+				"1": "Normy i większość detali pochodzi od",
+				"2": "Niektóre informacje zostały pobrane również z"
+			}
+		},
+		"3": {
+			"q": "Jak obliczany jest dystans pomiędzy sensorem, a moją lokalizacją?",
+			"a": {
+				"1": "Używamy",
+				"2": "formuły Tadeusza Vincentego",
+				"3": "https://en.wikipedia.org/wiki/Vincenty%27s_formulae",
+				"4": "w celu zapewnienia największej dokładności."
+			}
+		},
+		"4": {
+			"q": "Czy to narzędzia zbiera prywatne dane?",
+			"a": {
+				"1": "Nie, Air Radar nie zbiera ani nie przechowuje żadnych prywatnych informacji, takich jak np. twój adres IP. Nasz kod jest również w pełni otwartoźródłowy.",
+				"2": "Niemniej jednak korzystamy z usług firm trzecich, które mogą to robić. Możesz zapoznać się z ich politykami prywatności poniżej:",
+				"3": "część OpenStreetMap Foundation"
+			}
+		},
+		"5": {
+			"q": "Kto stoi za tym serwisem?",
+			"a": {
+				"1": "Air Radar został stworzony przez",
+				"2": "Antoniego Kępińskiego",
+				"3": ", młodego programistę z Polski, z pomocą wielu niezwykłych kontrybutorów open-source."
+			}
+		}
+	}
+}

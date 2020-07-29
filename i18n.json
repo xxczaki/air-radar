@@ -1,0 +1,27 @@
+{
+	"allLanguages": [
+		"en",
+		"pl"
+	],
+	"defaultLanguage": "en",
+	"currentPagesDir": "pages_",
+	"finalPagesDir": "pages",
+	"localesPath": "locales",
+	"pages": {
+		"*": [
+			"common"
+		],
+		"/404": [
+			"404"
+		],
+		"/": [
+			"home"
+		],
+		"/preferences": [
+			"preferences"
+		],
+		"/report": [
+			"report"
+		]
+	}
+}

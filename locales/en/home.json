@@ -1,0 +1,52 @@
+{
+	"location": "Location (optional)",
+	"location-error": "Location not found",
+	"location-label": "Location you want to check the air quality for",
+	"check-button": "Check",
+	"illustration-label": "Illustration",
+	"how-it-works": "How it works?",
+	"how-it-works-description1": "Click the button above to get information about air quality from the sensor closest to you. You can also enter a location manually. Air Radar uses 2 trusted data sources to ensure that you will get the latest and most accurate data possible.",
+	"how-it-works-description2": "Furthermore, Air Radar is totally free and open-source. Try it out today!",
+	"faq": {
+		"1": {
+			"q": "What is the data sources priority?",
+			"a": {
+				"1": "Air Radar will attempt to obtain data from",
+				"2": "first. If without success,",
+				"3": "will be used."
+			}
+		},
+		"2": {
+			"q": "Where do the pollutant details come from?",
+			"a": {
+				"1": "Norms and most details come from",
+				"2": "Some were also taken from"
+			}
+		},
+		"3": {
+			"q": "How is the distance between the sensor and my location calculated?",
+			"a": {
+				"1": "We use",
+				"2": "Vincenty's formulae",
+				"3": "https://en.wikipedia.org/wiki/Vincenty%27s_formulae",
+				"4": "to ensure the highest accuracy."
+			}
+		},
+		"4": {
+			"q": "Does this tool collect any personal data?",
+			"a": {
+				"1": "No, Air Radar does not collect nor store any private information, such as your IP address. Our code is also fully open-source.",
+				"2": "However, we use some third-party services, which might do so. You can check their privacy policies below:",
+				"3": "part of OpenStreetMap Foundation"
+			}
+		},
+		"5": {
+			"q": "Who is the creator of this service?",
+			"a": {
+				"1": "Air Radar was created by",
+				"2": "Antoni Kepinski",
+				"3": ", a young developer from Poland, with help of some amazing open-source contributors."
+			}
+		}
+	}
+}

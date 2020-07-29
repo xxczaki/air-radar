@@ -4,12 +4,15 @@ import {darken} from 'polished';
 // @ts-expect-error
 import LatLon from 'geodesy/latlon-vincenty.js';
 import {Tooltip} from 'react-tippy';
+import useTranslation from 'next-translate/useTranslation';
 import {Except} from 'type-fest';
 
 import ExtLink from '../extlink';
 import Description from './description';
 import {humanizeLevel} from '../../utils/humanize';
 import {Response} from '../../utils/fetcher';
+import {usePreferences} from '../../hooks/use-preferences';
+import {convert} from '../../utils/convert';
 
 interface BoxProps {
 	background?: string;
@@ -65,6 +68,9 @@ const Value = styled.div<BoxProps>`
 `;
 
 const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.Element => {
+	const {t} = useTranslation();
+	const {unit} = usePreferences();
+
 	const location = new LatLon(coords.latitude, coords.longitude);
 	const _sensor = new LatLon(sensor.latitude as number, sensor.longitude as number);
 
@@ -80,7 +86,6 @@ const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.E
 							interactive
 							arrow
 							position="top"
-							popperOptions={{positionFixed: true}}
 							html={<Description name={element.name} value={element.value}/>}
 						>
 							<Value background={current.indexes[0].color}>
@@ -92,10 +97,10 @@ const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.E
 				</ValuesBox>
 			</Box>
 			<Box background="var(--gray)">
-				<h1>Sensor information</h1>
-				<p>Provider: <ExtLink href={sensor.provider === 'airly' ? 'https://map.airly.eu' : 'https://aqicn.org/'}><b>{sensor.provider === 'airly' ? 'Airly' : 'World Air Quality Index'}</b></ExtLink></p>
-				<p>Result from: <b>{current.time}</b></p>
-				<p>Distance: <b>{sensor.provider === 'airly' ? 'N/A' : `${(location.distanceTo(_sensor) / 1000).toFixed(1)} km`}</b></p>
+				<h1>{t('report:information')}</h1>
+				<p>{t('report:provider')} <ExtLink href={sensor.provider === 'airly' ? 'https://map.airly.eu' : 'https://aqicn.org/'}><b>{sensor.provider === 'airly' ? 'Airly' : 'World Air Quality Index'}</b></ExtLink></p>
+				<p>{t('report:from')} <b>{current.time}</b></p>
+				<p>{t('report:distance')} <b>{sensor.provider === 'airly' ? 'N/A' : convert(location.distanceTo(_sensor), unit)}</b></p>
 			</Box>
 		</Wrapper>
 	);
