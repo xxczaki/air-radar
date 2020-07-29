@@ -35,7 +35,7 @@ const NavLink = ({title, href, lang}: Props): JSX.Element => {
 
 	return (
 		<Link href={href} lang={lang}>
-			<Wrapper active={router.pathname === href}>{title}</Wrapper>
+			<Wrapper active={router.pathname === href || router.pathname === (href === '/' ? `/${lang}` : `/${lang}${href}`)}>{title}</Wrapper>
 		</Link>
 	);
 };
