@@ -1,9 +1,7 @@
 import React from 'react';
 import {NextPage} from 'next';
 import styled from 'styled-components';
-// @ts-expect-error
 import Link from 'next-translate/Link';
-// @ts-expect-error
 import useTranslation from 'next-translate/useTranslation';
 
 import Container from '../components/container';

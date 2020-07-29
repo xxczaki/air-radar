@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import {SimpleImg} from 'react-simple-img';
 import {useForm} from 'react-hook-form';
-// @ts-expect-error
 import router from 'next-translate/Router';
 import {toast} from 'react-toastify';
-// @ts-expect-error
 import useTranslation from 'next-translate/useTranslation';
 
 import Header from './header';

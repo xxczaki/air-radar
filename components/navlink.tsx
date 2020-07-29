@@ -1,6 +1,5 @@
 import React from 'react';
 import {useRouter} from 'next/router';
-// @ts-expect-error
 import Link from 'next-translate/Link';
 import styled from 'styled-components';
 

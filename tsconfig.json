@@ -16,7 +16,11 @@
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
 		"isolatedModules": true,
-		"jsx": "preserve"
+		"jsx": "preserve",
+		"typeRoots": [
+			"external.d.ts",
+			"node_modules/@types"
+		]
 	},
 	"exclude": [
 		"node_modules",
