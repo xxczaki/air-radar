@@ -67,7 +67,7 @@ const Value = styled.div<BoxProps>`
 	}
 `;
 
-const Crucial = ({coords, current, sensor}: Except<Response, 'forecast'>): JSX.Element => {
+const Crucial = ({coords, current, sensor}: Except<Response, 'forecast' | 'id'>): JSX.Element => {
 	const {t} = useTranslation();
 	const {unit} = usePreferences();
 

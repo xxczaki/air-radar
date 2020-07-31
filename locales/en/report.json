@@ -2,5 +2,6 @@
 	"information": "Sensor information",
 	"provider": "Provider:",
 	"from": "Measurement time:",
-	"distance": "Distance:"
+	"distance": "Distance:",
+	"share": "Share this report"
 }

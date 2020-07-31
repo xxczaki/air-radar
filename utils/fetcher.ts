@@ -1,6 +1,7 @@
 'use strict';
 
 import Airly from 'airly';
+import {Except} from 'type-fest';
 
 import {analyzeAqi} from './analyze-aqi';
 
@@ -26,6 +27,7 @@ interface Data {
 	time: string;
 }
 export interface Response {
+	id: string;
 	coords: {
 		latitude: number;
 		longitude: number;
@@ -44,7 +46,7 @@ export interface Response {
 	}>;
 }
 
-export const fetcher = async (latitude?: string, longitude?: string): Promise<Response | null> => {
+export const fetcher = async (latitude?: string, longitude?: string): Promise<Except<Response, 'id'> | null> => {
 	if (latitude && longitude) {
 		const lat = Number.parseFloat(latitude);
 		const lng = Number.parseFloat(longitude);
@@ -59,6 +61,7 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Re
 			const response = await fetch(`https://api.waqi.info/feed/geo:${lat};${lng}/?token=${process.env.NEXT_PUBLIC_WAQI_TOKEN}`);
 			const data = await response.json();
 
+			// Current
 			const pollutants = Object.keys(data.data.iaqi);
 			const vals: Array<{v: number}> = Object.values(data.data.iaqi);
 			const aqiDescription = analyzeAqi(data.data.aqi);
@@ -128,7 +131,6 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Re
 				}),
 				time: new Date(data.current.fromDateTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false})
 			},
-			forecast: data.forecast,
 			sensor: {
 				provider: 'airly'
 			}

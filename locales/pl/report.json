@@ -2,5 +2,6 @@
 	"information": "Dane sensora",
 	"provider": "Dostawca:",
 	"from": "Czas pomiaru:",
-	"distance": "Dystans:"
+	"distance": "Dystans:",
+	"share": "Udostępnij ten raport"
 }

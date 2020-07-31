@@ -20,7 +20,7 @@
 		"/preferences": [
 			"preferences"
 		],
-		"/report": [
+		"/reports/[id]": [
 			"report"
 		]
 	}

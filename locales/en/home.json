@@ -3,6 +3,7 @@
 	"location-error": "Location not found",
 	"location-label": "Location you want to check the air quality for",
 	"check-button": "Check",
+	"create-error": "Could not create a report",
 	"illustration-label": "Illustration",
 	"how-it-works": "How it works?",
 	"how-it-works-description1": "Click the button above to get information about air quality from the sensor closest to you. You can also enter a location manually. Air Radar uses 2 trusted data sources to ensure that you will get the latest and most accurate data possible.",

@@ -59,7 +59,6 @@
 		"nprogress": "^0.2.0",
 		"polished": "^3.6.5",
 		"react": "16.13.1",
-		"react-chartjs-2": "^2.9.0",
 		"react-dom": "16.13.1",
 		"react-hook-form": "^6.1.2",
 		"react-loading-skeleton": "^2.1.1",

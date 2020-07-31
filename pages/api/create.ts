@@ -9,12 +9,10 @@ type Data = {
 const createReport = async (request: NextApiRequest, response: NextApiResponse<Data>): Promise<void> => {
 	if (request.method === 'POST') {
 		try {
-			const {name, content, owner, key} = JSON.parse(request.body);
-
 			await client.connect();
 
 			const db = client.db(process.env.DB_NAME);
-			await db.collection(process.env.DB_COLLECTION ?? '').insertOne({name, content, owner, key});
+			await db.collection(process.env.DB_COLLECTION ?? '').insertOne(JSON.parse(request.body));
 
 			response.status(201).json({message: 'OK'});
 		} catch {

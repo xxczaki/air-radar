@@ -15,6 +15,7 @@ import {
 } from './form';
 import Details from './details';
 import ExtLink from './extlink';
+import {fetcher} from '../utils/fetcher';
 
 import illustration from '../public/images/undraw-illustration.svg';
 
@@ -62,12 +63,12 @@ const About = (): JSX.Element => {
 	const {t} = useTranslation();
 
 	const onSubmit = async (data: FormData) => {
-		if (data.location) {
-			const response = await fetch(`https://nominatim.openstreetmap.org/search?q="${data.location}"&format=json&limit=1`);
-			const json = await response.json();
+		const {nanoid} = await import('nanoid');
+		const id = nanoid(10);
 
-			if (json.length === 0) {
-				toast.error(t('home:location-error'), {
+		const showError = (type: 'create' | 'location'): void => {
+			if (type === 'create') {
+				toast.error(t('home:create-error'), {
 					position: 'bottom-right',
 					autoClose: 2000,
 					hideProgressBar: false,
@@ -76,13 +77,55 @@ const About = (): JSX.Element => {
 					progress: undefined
 				});
 			} else {
-				await router.replaceI18n(`/report?lat=${json[0].lat}&lng=${json[0].lon}`);
+				toast.error(t('home:location-error'), {
+					position: 'bottom-right',
+					autoClose: 2000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					progress: undefined
+				});
+			}
+		};
+
+		if (data.location) {
+			const response = await fetch(`https://nominatim.openstreetmap.org/search?q="${data.location}"&format=json&limit=1`);
+			const json = await response.json();
+
+			if (json.length === 0) {
+				showError('location');
+			} else {
+				const data = await fetcher(json[0].lat, json[0].lon);
+
+				const response = await fetch(`${process.env.SITE ?? 'http://localhost:3000'}/api/create`, {
+					method: 'POST',
+					body: JSON.stringify({id, coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data})
+				});
+				const report = await response.json();
+
+				if (report?.message === 'OK') {
+					await router.replaceI18n(`/reports/${id}`);
+				} else {
+					showError('create');
+				}
 			}
 		} else {
 			const {getPosition} = await import('../utils/get-position');
 			const {coords} = await getPosition();
 
-			await router.replaceI18n(`/report?lat=${coords.latitude}&lng=${coords.longitude}`);
+			const data = await fetcher(coords.latitude as unknown as string, coords.longitude as unknown as string);
+
+			const response = await fetch(`${process.env.SITE ?? 'http://localhost:3000'}/api/create`, {
+				method: 'POST',
+				body: JSON.stringify({id, ...coords, ...data})
+			});
+			const report = await response.json();
+
+			if (report?.message === 'OK') {
+				await router.replaceI18n(`/reports/${id}`);
+			} else {
+				showError('create');
+			}
 		}
 	};
 

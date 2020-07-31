@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Bar} from 'react-chartjs-2';
+import {Except} from 'type-fest';
 
 import Crucial from './crucial';
+import Share from './share';
 import {Response} from '../../utils/fetcher';
 
 export const ReportContainer = styled.div`
@@ -11,9 +12,12 @@ export const ReportContainer = styled.div`
 	width: 100%;
 `;
 
-const Report = ({coords, current, forecast, sensor}: Response): JSX.Element => {
+const Report = ({coords, current, sensor}: Except<Response, 'forecast' | 'id'>): JSX.Element => {
 	return (
-		<Crucial coords={coords} current={current} sensor={sensor}/>
+		<>
+			<Crucial coords={coords} current={current} sensor={sensor}/>
+			<Share/>
+		</>
 	);
 };
 
