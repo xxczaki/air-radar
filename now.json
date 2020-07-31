@@ -20,7 +20,7 @@
 				},
 				{
 					"key": "Content-Security-Policy",
-					"value": "style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self'; img-src 'self' data:; connect-src https://nominatim.openstreetmap.org https://airapi.airly.eu https://api.waqi.info"
+					"value": "style-src 'self' 'unsafe-inline'; font-src 'self' data:; default-src 'self'; script-src 'unsafe-eval' 'self'; img-src 'self' data:; connect-src 'self' https://nominatim.openstreetmap.org https://airapi.airly.eu https://api.waqi.info"
 				},
 				{
 					"key": "X-XSS-Protection",
