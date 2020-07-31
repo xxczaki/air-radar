@@ -24,7 +24,7 @@ interface Props {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
-	const response = await fetch(`${process.env.VERCEL_URL ?? 'http://localhost:3000'}/api/fetch`, {
+	const response = await fetch('https://air-radar.vercel.app/api/fetch', {
 		method: 'POST',
 		body: query.id as string
 	});
