@@ -58,9 +58,10 @@ $ npm test
 		- [x] Location
 		- [x] Distance
 	- [ ] Share functionality
-    	- [ ] Generate Open Graph images
+    	- [x] Generate Open Graph images
+    	- [ ] Investigate the `Navigator.share()` API
 	- [x] Information about WHO standards
-- [ ] i18n **WIP**
+- [x] i18n
 
 ### License
 
