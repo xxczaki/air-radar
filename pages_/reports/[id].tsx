@@ -45,8 +45,6 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 
 	const report: Response = data?.report ? JSON.parse(data?.report)[0] : undefined;
 
-	console.log(report);
-
 	return (
 		<Container>
 			<Main>
@@ -71,7 +69,7 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 								}}
 								color={report.current.indexes[0].color as string}
 							/>
-							<Report coords={report.coords} current={report.current} sensor={report.sensor}/>
+							<Report id={report.id} coords={report.coords} current={report.current} sensor={report.sensor}/>
 						</ReportContainer>
 					</>
 				) : (

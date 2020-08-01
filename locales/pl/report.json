@@ -5,5 +5,9 @@
 	"provider": "Dostawca:",
 	"from": "Czas pomiaru:",
 	"distance": "Dystans:",
-	"share": "Udostępnij ten raport"
+	"report-info": "Informacje o raporcie",
+	"share": "Udostępnij",
+	"copy": "Skopiuj",
+	"copy-success": "Skopiowano!",
+	"copy-error": "Nie udało się skopiować adresu"
 }

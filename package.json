@@ -65,6 +65,7 @@
         "react-simple-img": "^2.3.9",
         "react-tippy": "^1.4.0",
         "react-toastify": "^6.0.8",
+        "react-use-web-share": "^1.0.2",
         "recoil": "0.0.10",
         "styled-components": "^5.1.1",
         "swr": "^0.2.3"

@@ -5,5 +5,9 @@
 	"provider": "Provider:",
 	"from": "Measurement time:",
 	"distance": "Distance:",
-	"share": "Share this report"
+	"report-info": "Report details",
+	"share": "Share",
+	"copy": "Copy",
+	"copy-success": "Copied!",
+	"copy-error": "Could not copy the address"
 }
