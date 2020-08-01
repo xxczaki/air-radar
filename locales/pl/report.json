@@ -1,4 +1,6 @@
 {
+	"name": "Raport",
+	"title": "Raport {{id}}",
 	"information": "Dane sensora",
 	"provider": "Dostawca:",
 	"from": "Czas pomiaru:",

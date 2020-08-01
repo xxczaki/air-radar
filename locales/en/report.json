@@ -1,4 +1,6 @@
 {
+	"name": "Report",
+	"title": "Report {{id}}",
 	"information": "Sensor information",
 	"provider": "Provider:",
 	"from": "Measurement time:",
