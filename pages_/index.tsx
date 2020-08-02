@@ -1,12 +1,23 @@
 import React from 'react';
-import {NextPage} from 'next';
+import {NextPage, GetStaticProps} from 'next';
 
 import Container from '../components/container';
 import Main from '../components/main';
 import About from '../components/about';
 
-const Index: NextPage<unknown> = () => (
-	<Container>
+interface Props {
+	reports: number;
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+	const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
+	const reports = await response.json();
+
+	return {props: {reports: JSON.parse(reports.report).length}};
+};
+
+const Index: NextPage<Props> = ({reports}: Props) => (
+	<Container reports={reports}>
 		<Main>
 			<About/>
 		</Main>
