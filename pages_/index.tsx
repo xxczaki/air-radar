@@ -10,10 +10,14 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-	const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
-	const reports = await response.json();
+	try {
+		const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
+		const reports = await response.json();
 
-	return {props: {reports: JSON.parse(reports.report).length}};
+		return {props: {reports: JSON.parse(reports.report).length}};
+	} catch {
+		return {props: {reports: 0}};
+	}
 };
 
 const Index: NextPage<Props> = ({reports}: Props) => (
