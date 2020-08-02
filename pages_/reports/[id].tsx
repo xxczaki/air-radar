@@ -64,7 +64,7 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 		return {props: {data}};
 	}
 
-	return {props: {data: null}};
+	return {props: {data: null}, revalidate: 1};
 };
 
 const Index: NextPage<Props> = (props: Readonly<Props>) => {
