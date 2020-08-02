@@ -11,7 +11,11 @@ import WrappedSpinner from '../../components/report/wrapped-spinner';
 import {Response} from '../../utils/fetcher';
 
 const Head = dynamic(async () => import('next/head'));
-const ReportContainer = dynamic(async () => import('../../components/report').then(module => module.ReportContainer));
+const ReportContainer = dynamic(async () => {
+	const {ReportContainer} = await import('../../components/report');
+
+	return ReportContainer;
+});
 const Report = dynamic(async () => import('../../components/report'));
 const OpenMap = dynamic(
 	async () => import('../../components/report/map'),
