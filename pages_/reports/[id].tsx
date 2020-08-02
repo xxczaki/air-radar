@@ -1,7 +1,9 @@
 import React from 'react';
-import {NextPage, GetServerSideProps} from 'next';
+import {NextPage, GetStaticPaths, GetStaticProps} from 'next';
 import Head from 'next/head';
 import dynamic from 'next/dynamic';
+import {useRouter} from 'next/router';
+import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
 import Skeleton from 'react-loading-skeleton';
 
@@ -18,13 +20,40 @@ const OpenMap = dynamic(
 	}
 );
 
+const _Spinner = dynamic(async () => import('../../components/form/spinner'));
+
 interface Props {
 	data: {
 		report?: string;
 	};
 }
 
-export const getServerSideProps: GetServerSideProps = async ({params}) => {
+const Wrapper = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+`;
+
+const Spinner = styled(_Spinner)`
+	width: 5rem;
+	height: 5rem;
+`;
+
+export const getStaticPaths: GetStaticPaths = async () => {
+	const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
+	const reports = await response.json();
+
+	const paths = JSON.parse(reports.report).map((report: any) => {
+		return {
+			params: {id: report.id ?? ''}
+		};
+	});
+
+	return {paths, fallback: true};
+};
+
+export const getStaticProps: GetStaticProps = async ({params}) => {
 	if (params?.id) {
 		const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`, {
 			method: 'POST',
@@ -42,13 +71,18 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 	const {data} = props;
 
 	const {t} = useTranslation();
+	const router = useRouter();
 
 	const report: Response = data?.report ? JSON.parse(data?.report)[0] : undefined;
 
 	return (
 		<Container>
 			<Main>
-				{report ? (
+				{router.isFallback ? (
+					<Wrapper>
+						<Spinner/>
+					</Wrapper>
+				) : (report ? (
 					<>
 						<Head>
 							<link rel="preconnect" href="https://api.mapbox.com"/>
@@ -69,12 +103,15 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 								}}
 								color={report.current.indexes[0].color as string}
 							/>
-							<Report id={report.id} coords={report.coords} current={report.current} sensor={report.sensor}/>
+							<Report id={report.id} date={report.date} coords={report.coords} current={report.current} sensor={report.sensor}/>
 						</ReportContainer>
 					</>
 				) : (
-					<h1>Report not found</h1>
-				)}
+					<>
+						<h1>Report not found</h1>
+						<p>You can try generating one on the home page.</p>
+					</>
+				))}
 			</Main>
 		</Container>
 	);
