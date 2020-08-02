@@ -24,6 +24,9 @@ const Button = styled.button`
 	overflow: hidden;
 	appearance: button;
 	height: 2.5em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	&:hover {
 		opacity: 0.8;

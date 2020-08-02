@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import {SimpleImg} from 'react-simple-img';
 import {useForm} from 'react-hook-form';
@@ -18,6 +19,8 @@ import ExtLink from './extlink';
 import {fetcher} from '../utils/fetcher';
 
 import illustration from '../public/images/undraw-illustration.svg';
+
+const Spinner = dynamic(async () => import('./form/spinner'));
 
 type FormData = {
 	location?: string;
@@ -59,10 +62,13 @@ const Divider = styled.hr`
 `;
 
 const About = (): JSX.Element => {
+	const [loading, isLoading] = useState(false);
 	const {register, handleSubmit} = useForm<FormData>();
 	const {t} = useTranslation();
 
 	const onSubmit = async (data: FormData) => {
+		isLoading(true);
+
 		const {nanoid} = await import('nanoid');
 		const id = nanoid(10);
 
@@ -86,6 +92,8 @@ const About = (): JSX.Element => {
 					progress: undefined
 				});
 			}
+
+			isLoading(false);
 		};
 
 		if (data.location) {
@@ -99,7 +107,7 @@ const About = (): JSX.Element => {
 
 				const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
 					method: 'POST',
-					body: JSON.stringify({id, coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data})
+					body: JSON.stringify({id, date: new Date().toLocaleString('en', {hour12: false}), coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data})
 				});
 				const report = await response.json();
 
@@ -117,7 +125,7 @@ const About = (): JSX.Element => {
 
 			const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
 				method: 'POST',
-				body: JSON.stringify({id, ...coords, ...data})
+				body: JSON.stringify({id, date: new Date().toLocaleString('en', {hour12: false}), ...coords, ...data})
 			});
 			const report = await response.json();
 
@@ -137,7 +145,7 @@ const About = (): JSX.Element => {
 					<Form onSubmit={handleSubmit(onSubmit)}>
 						<Label>{t('home:location')}</Label>
 						<Input ref={register()} type="text" name="location" aria-label={t('home:location-label')} aria-required="false" placeholder="Times Square, New York"/>
-						<Button type="submit">{t('home:check-button')}</Button>
+						<Button type="submit">{loading ? <Spinner/> : t('home:check-button')}</Button>
 					</Form>
 				</Box>
 				<Image
