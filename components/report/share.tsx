@@ -1,7 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
-import {SimpleImg} from 'react-simple-img';
 import useTranslation from 'next-translate/useTranslation';
 import useWebShare from 'react-use-web-share';
 import {toast} from 'react-toastify';
@@ -33,7 +32,7 @@ const Box = styled.div`
 	justify-content: space-between;
 `;
 
-const Icon = styled(SimpleImg)`
+const Icon = styled.img`
 	width: 1rem;
 `;
 
@@ -41,6 +40,7 @@ const Button = styled(_Button)<{long?: boolean}>`
 	background: var(--gray);
 	width: ${props => props.long ? '8.5rem' : '7rem'};
 	justify-content: space-evenly;
+	margin-top: 0.8rem;
 `;
 
 const Share = ({id, date}: Props): JSX.Element => {
@@ -77,12 +77,12 @@ const Share = ({id, date}: Props): JSX.Element => {
 				<p>{date}</p>
 				{isSupported ? (
 					<Button long={lang === 'pl'} onClick={share}>
-						<Icon src={shareIcon} width="1rem" height="1rem" placeholder="var(--gray)" alt="Icon"/>
+						<Icon src={shareIcon} loading="lazy" decoding="async" alt="Icon"/>
 						{t('report:share')}
 					</Button>
 				) : (
 					<Button onClick={copy}>
-						<Icon src={copyIcon} width="1rem" height="1rem" placeholder="var(--gray)" alt="Icon"/>
+						<Icon src={copyIcon} loading="lazy" decoding="async" alt="Icon"/>
 						{t('report:copy')}
 					</Button>
 				)}
