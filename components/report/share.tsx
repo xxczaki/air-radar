@@ -1,10 +1,14 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
+import {SimpleImg} from 'react-simple-img';
 import useTranslation from 'next-translate/useTranslation';
 import useWebShare from 'react-use-web-share';
 import {toast} from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
+
+import copyIcon from '../../public/images/copy-outline.svg';
+import shareIcon from '../../public/images/share-outline.svg';
 
 const _Button = dynamic(
 	async () => import('../../components/form/button'),
@@ -15,6 +19,7 @@ const _Button = dynamic(
 
 interface Props {
 	id: string;
+	date: string;
 }
 
 const Wrapper = styled.section`
@@ -25,24 +30,21 @@ const Wrapper = styled.section`
 
 const Box = styled.div`
 	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	border-radius: var(--radius);
-	background-color: var(--gray);
-	color: var(--text);
-	padding: 1em;
-
-	h1 {
-		margin: 0;
-	}
+	justify-content: space-between;
 `;
 
-const Button = styled(_Button)`
-	background: #424242;
+const Icon = styled(SimpleImg)`
+	width: 1rem;
 `;
 
-const Share = ({id}: Props): JSX.Element => {
-	const {t} = useTranslation();
+const Button = styled(_Button)<{long?: boolean}>`
+	background: var(--gray);
+	width: ${props => props.long ? '8.5rem' : '7rem'};
+	justify-content: space-evenly;
+`;
+
+const Share = ({id, date}: Props): JSX.Element => {
+	const {t, lang} = useTranslation();
 	const {isSupported, share} = useWebShare();
 
 	const copy = async () => {
@@ -72,8 +74,18 @@ const Share = ({id}: Props): JSX.Element => {
 	return (
 		<Wrapper>
 			<Box>
-				<h1>{t('report:report-info')}</h1>
-				{isSupported ? <Button onClick={share}>{t('report:share')}</Button> : <Button onClick={copy}>{t('report:copy')}</Button>}
+				<p>{date}</p>
+				{isSupported ? (
+					<Button long={lang === 'pl'} onClick={share}>
+						<Icon src={shareIcon} width="1rem" height="1rem" placeholder="var(--gray)" alt="Icon"/>
+						{t('report:share')}
+					</Button>
+				) : (
+					<Button onClick={copy}>
+						<Icon src={copyIcon} width="1rem" height="1rem" placeholder="var(--gray)" alt="Icon"/>
+						{t('report:copy')}
+					</Button>
+				)}
 			</Box>
 		</Wrapper>
 	);
