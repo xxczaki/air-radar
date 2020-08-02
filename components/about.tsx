@@ -154,7 +154,7 @@ const About = (): JSX.Element => {
 					// @ts-expect-error
 					draggable={false}
 					alt={t('home:illustration-label')}
-					height="13em"
+					height="15rem"
 				/>
 			</Container>
 			<Divider/>
