@@ -12,11 +12,11 @@ export const ReportContainer = styled.div`
 	width: 100%;
 `;
 
-const Report = ({id, coords, current, sensor}: Except<Response, 'forecast'>): JSX.Element => {
+const Report = ({id, date, coords, current, sensor}: Except<Response, 'forecast'>): JSX.Element => {
 	return (
 		<>
 			<Crucial coords={coords} current={current} sensor={sensor}/>
-			<Share id={id}/>
+			<Share id={id} date={date}/>
 		</>
 	);
 };
