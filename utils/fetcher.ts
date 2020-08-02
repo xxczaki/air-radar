@@ -28,6 +28,7 @@ interface Data {
 }
 export interface Response {
 	id: string;
+	date: string;
 	coords: {
 		latitude: number;
 		longitude: number;
