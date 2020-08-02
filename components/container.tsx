@@ -61,7 +61,7 @@ const Container = ({children, reports}: Props): JSX.Element => {
 			{children}
 			<Footer>
 				<p>Antoni Kepinski &copy; {new Date().getFullYear()}</p>
-				<p>Reports created: <b>{reports}</b></p>
+				{reports && <p>Reports created: <b>{reports}</b></p>}
 			</Footer>
 		</>
 	);

@@ -41,10 +41,10 @@ const Spinner = styled(_Spinner)`
 `;
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
-	const reports = await response.json();
+	try {
+		const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
+		const reports = await response.json();
 
-	if (reports.report) {
 		const paths = JSON.parse(reports.report).map((report: any) => {
 			return {
 				params: {id: report.id ?? ''}
@@ -52,9 +52,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 		});
 
 		return {paths, fallback: true};
+	} catch {
+		return {paths: [], fallback: true};
 	}
-
-	return {paths: [], fallback: true};
 };
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
