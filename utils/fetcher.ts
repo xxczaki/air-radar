@@ -47,7 +47,7 @@ export interface Response {
 	}>;
 }
 
-export const fetcher = async (latitude?: string, longitude?: string): Promise<Except<Response, 'id'> | null> => {
+export const fetcher = async (latitude?: string, longitude?: string): Promise<Except<Response, 'id' | 'date'> | null> => {
 	if (latitude && longitude) {
 		const lat = Number.parseFloat(latitude);
 		const lng = Number.parseFloat(longitude);
