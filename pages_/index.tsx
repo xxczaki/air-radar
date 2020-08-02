@@ -14,9 +14,9 @@ export const getStaticProps: GetStaticProps = async () => {
 		const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
 		const reports = await response.json();
 
-		return {props: {reports: JSON.parse(reports.report).length}};
+		return {props: {reports: JSON.parse(reports.report).length}, revalidate: 1};
 	} catch {
-		return {props: {reports: 0}};
+		return {props: {reports: 1}, revalidate: 1};
 	}
 };
 
