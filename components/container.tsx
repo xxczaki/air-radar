@@ -41,6 +41,14 @@ const Wrapper = styled.div`
 	justify-content: space-between;
 `;
 
+const Annotation = styled.p`
+	position: relative;
+	font-size: 0.8rem;
+	opacity: 0.5;
+	top: 1.2rem;
+	user-select: none;
+`;
+
 const Container = ({children, reports}: Props): JSX.Element => {
 	const {t} = useTranslation();
 	const {language} = usePreferences();
@@ -49,9 +57,12 @@ const Container = ({children, reports}: Props): JSX.Element => {
 		<>
 			<Header>
 				<Wrapper>
-					<Link href="/" lang={language}>
-						<Logo src={cloudOutline} draggable={false} alt="Flash"/>
-					</Link>
+					<div style={{display: 'flex'}}>
+						<Link href="/" lang={language}>
+							<Logo src={cloudOutline} draggable={false} alt="Flash"/>
+						</Link>
+						<Annotation>alpha</Annotation>
+					</div>
 					<Nav>
 						<NavLink title={t('common:home')} href="/" lang={language}/>
 						<NavLink title={t('common:preferences')} href="/preferences" lang={language}/>

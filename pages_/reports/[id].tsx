@@ -1,17 +1,18 @@
 import React from 'react';
 import {NextPage, GetStaticPaths, GetStaticProps} from 'next';
-import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
-import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
 import Skeleton from 'react-loading-skeleton';
 
 import Container from '../../components/container';
 import Main from '../../components/main';
-import Report, {ReportContainer} from '../../components/report';
+import WrappedSpinner from '../../components/report/wrapped-spinner';
 import {Response} from '../../utils/fetcher';
 
+const Head = dynamic(async () => import('next/head'));
+const ReportContainer = dynamic(async () => import('../../components/report').then(module => module.ReportContainer));
+const Report = dynamic(async () => import('../../components/report'));
 const OpenMap = dynamic(
 	async () => import('../../components/report/map'),
 	{
@@ -20,25 +21,11 @@ const OpenMap = dynamic(
 	}
 );
 
-const _Spinner = dynamic(async () => import('../../components/form/spinner'));
-
 interface Props {
 	data: {
 		report?: string;
 	};
 }
-
-const Wrapper = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-`;
-
-const Spinner = styled(_Spinner)`
-	width: 5rem;
-	height: 5rem;
-`;
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	try {
@@ -82,11 +69,7 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 	return (
 		<Container>
 			<Main>
-				{router.isFallback ? (
-					<Wrapper>
-						<Spinner/>
-					</Wrapper>
-				) : (report ? (
+				{router.isFallback ? <WrappedSpinner/> : (report ? (
 					<>
 						<Head>
 							<link rel="preconnect" href="https://api.mapbox.com"/>
