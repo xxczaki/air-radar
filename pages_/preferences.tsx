@@ -45,10 +45,10 @@ const Index: NextPage<unknown> = () => {
 				<h1>{t('preferences:header')}</h1>
 				<p>{t('preferences:language')}</p>
 				<Wrapper>
-					<Link href="/preferences" lang="en">
+					<Link shallow href="/preferences" lang="en">
 						<Preference active={language === 'en'} onClick={() => updateLanguage('en')}>🇺🇸</Preference>
 					</Link>
-					<Link href="/preferences" lang="pl">
+					<Link shallow href="/preferences" lang="pl">
 						<Preference active={language === 'pl'} onClick={() => updateLanguage('pl')}>🇵🇱</Preference>
 					</Link>
 				</Wrapper>
