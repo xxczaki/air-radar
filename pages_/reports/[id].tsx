@@ -44,13 +44,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 	const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/fetch`);
 	const reports = await response.json();
 
-	const paths = JSON.parse(reports.report).map((report: any) => {
-		return {
-			params: {id: report.id ?? ''}
-		};
-	});
+	if (reports.report) {
+		const paths = JSON.parse(reports.report).map((report: any) => {
+			return {
+				params: {id: report.id ?? ''}
+			};
+		});
 
-	return {paths, fallback: true};
+		return {paths, fallback: true};
+	}
 };
 
 export const getStaticProps: GetStaticProps = async ({params}) => {
