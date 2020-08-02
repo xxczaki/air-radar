@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import {SimpleImg} from 'react-simple-img';
 import {useForm} from 'react-hook-form';
 import router from 'next-translate/Router';
-import {toast} from 'react-toastify';
 import useTranslation from 'next-translate/useTranslation';
 
 import Header from './header';
@@ -16,7 +15,6 @@ import {
 } from './form';
 import Details from './details';
 import ExtLink from './extlink';
-import {fetcher} from '../utils/fetcher';
 
 import illustration from '../public/images/undraw-illustration.svg';
 
@@ -70,9 +68,12 @@ const About = (): JSX.Element => {
 		isLoading(true);
 
 		const {nanoid} = await import('nanoid');
+		const {fetcher} = await import('../utils/fetcher');
 		const id = nanoid(10);
 
-		const showError = (type: 'create' | 'location'): void => {
+		const showError = async (type: 'create' | 'location'): Promise<void> => {
+			const {toast} = await import('react-toastify');
+
 			if (type === 'create') {
 				toast.error(t('home:create-error'), {
 					position: 'bottom-right',
@@ -101,7 +102,7 @@ const About = (): JSX.Element => {
 			const json = await response.json();
 
 			if (json.length === 0) {
-				showError('location');
+				await showError('location');
 			} else {
 				const data = await fetcher(json[0].lat, json[0].lon);
 
@@ -114,7 +115,7 @@ const About = (): JSX.Element => {
 				if (report?.message === 'OK') {
 					await router.replaceI18n(`/reports/${id}`);
 				} else {
-					showError('create');
+					await showError('create');
 				}
 			}
 		} else {
@@ -132,7 +133,7 @@ const About = (): JSX.Element => {
 			if (report?.message === 'OK') {
 				await router.replaceI18n(`/reports/${id}`);
 			} else {
-				showError('create');
+				await showError('create');
 			}
 		}
 	};
