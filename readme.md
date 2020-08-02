@@ -49,7 +49,7 @@ $ npm test
 		- [x] Airly
 		- [x] World Air Quality Index
 		- [ ] ?
-	- [ ] Show the amount of reports created
+	- [x] Show the amount of reports created
 - [ ] Reports page
     - [x] Map
 	- [ ] Charts
@@ -57,9 +57,9 @@ $ npm test
 		- [x] Provider
 		- [x] Location
 		- [x] Distance
-	- [ ] Share functionality
+	- [x] Share functionality
     	- [x] Generate Open Graph images
-    	- [ ] Investigate the `Navigator.share()` API
+    	- [x] Investigate the `Navigator.share()` API
 	- [x] Information about WHO standards
 - [x] i18n
 
