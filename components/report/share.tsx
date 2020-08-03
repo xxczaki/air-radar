@@ -76,7 +76,10 @@ const Share = ({id, date}: Props): JSX.Element => {
 			<Box>
 				<p>{date}</p>
 				{isSupported ? (
-					<Button long={lang === 'pl'} onClick={share}>
+					<Button
+						long={lang === 'pl'}
+						onClick={() => share({title: `${t('report:name')} ${id}`})}
+					>
 						<Icon src={shareIcon} loading="lazy" decoding="async" alt="Icon"/>
 						{t('report:share')}
 					</Button>
