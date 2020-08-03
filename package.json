@@ -1,7 +1,7 @@
 {
 	"name": "air-radar",
 	"version": "1.0.0",
-	"description": "Quickly check air quality in your area using trusted sources!",
+	"description": "Generate air quality reports from anywhere in the world and share them with your friends!",
 	"private": true,
 	"scripts": {
 		"build": "next-translate && next build",
