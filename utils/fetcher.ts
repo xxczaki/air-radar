@@ -102,7 +102,7 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 					values,
 					indexes,
 					standards: [],
-					time: new Date(data.data.time.s).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false})
+					time: new Date(data.data.time.s).toLocaleTimeString('en', {hour: '2-digit', minute: '2-digit', hour12: false})
 				},
 				sensor
 			};
@@ -130,7 +130,7 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 				values: data.current.values.filter((element: {name: string; value: number}) => names[element.name]).map((element: {name: string; value: number}) => {
 					return {name: names[element.name], value: element.value};
 				}),
-				time: new Date(data.current.fromDateTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit', hour12: false})
+				time: new Date(data.current.fromDateTime).toLocaleTimeString('en', {hour: '2-digit', minute: '2-digit', hour12: false})
 			},
 			sensor: {
 				provider: 'airly'
