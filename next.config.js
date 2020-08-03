@@ -1,5 +1,6 @@
 const withOptimizedImages = require('next-optimized-images');
 const withOffline = require('next-offline');
+const withTM = require('next-transpile-modules')(['geodesy']);
 
 const nextConfig = {
 	workboxOpts: {
@@ -28,5 +29,5 @@ const nextConfig = {
 	}
 };
 
-module.exports = withOptimizedImages((withOffline(nextConfig)));
+module.exports = withOptimizedImages((withOffline(withTM(nextConfig))));
 

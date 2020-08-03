@@ -49,7 +49,7 @@
 	"dependencies": {
 		"airly": "^3.1.0",
 		"core-js": "^3.6.5",
-		"geodesy": "^1.1.3",
+		"geodesy": "^2.2.1",
 		"lodash.debounce": "^4.0.8",
 		"mongodb": "^3.6.0",
 		"nanoid": "^3.1.12",
@@ -59,7 +59,7 @@
 		"polished": "^3.6.5",
 		"react": "16.13.1",
 		"react-dom": "16.13.1",
-		"react-hook-form": "^6.2.0",
+		"react-hook-form": "^6.3.0",
 		"react-loading-skeleton": "^2.1.1",
 		"react-map-gl": "^5.2.7",
 		"react-simple-img": "^2.3.9",
@@ -67,11 +67,11 @@
 		"react-toastify": "^6.0.8",
 		"react-use-web-share": "^1.0.2",
 		"recoil": "0.0.10",
-		"styled-components": "^5.1.1",
-		"swr": "^0.3.0"
+		"styled-components": "^5.1.1"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.11.0",
+		"@types/geodesy": "^2.2.2",
 		"@types/lodash.debounce": "^4.0.6",
 		"@types/mongodb": "^3.5.25",
 		"@types/nprogress": "^0.2.0",
@@ -90,7 +90,7 @@
 		"imagemin-svgo": "^8.0.0",
 		"next-offline": "^5.0.2",
 		"next-optimized-images": "^2.6.2",
-		"redux-devtools-extension": "^2.13.8",
+		"next-transpile-modules": "^4.0.2",
 		"stylelint": "^13.6.1",
 		"stylelint-config-recommended": "^3.0.0",
 		"type-fest": "^0.16.0",
