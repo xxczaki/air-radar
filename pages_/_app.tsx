@@ -130,7 +130,7 @@ const CustomApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => (
 		<GlobalStyle/>
 		<ToastContainer/>
 		<Head>
-			<title>Air Radar ☁️</title>
+			<title>Air Radar</title>
 		</Head>
 		<RecoilRoot>
 			<Component {...pageProps}/>
