@@ -22,6 +22,8 @@
 - Pleasing, fully responsive design 💅
 - Written in TypeScript
 
+*We aim to add more data sources in the future.
+
 ## Development
 
 The following environmental variables need to be provided:
