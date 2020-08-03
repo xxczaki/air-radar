@@ -1,6 +1,6 @@
 # Air Radar ☁️
 
-> Quickly check air quality in your area using trusted sources!
+> Generate air quality reports from anywhere in the world and share them with your friends!
 
 [![Build Status](https://travis-ci.org/xxczaki/air-radar.svg?branch=master)](https://travis-ci.org/xxczaki/air-radar)
 [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
