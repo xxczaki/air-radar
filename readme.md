@@ -74,6 +74,7 @@ $ npm test
     	- [x] Investigate the `Navigator.share()` API
 	- [x] Information about WHO standards
 - [x] i18n
+- [ ] Persist global state
 
 ## Technology stack
 
