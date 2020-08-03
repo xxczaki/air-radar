@@ -1,3 +1,7 @@
+**Disclaimer: Work in progress**
+
+---
+
 # Air Radar ☁️
 
 > Generate air quality reports from anywhere in the world and share them with your friends!
@@ -10,7 +14,13 @@
 
 ## Highlights
 
-WIP
+- Blazing fast (uses incremental SSG and many performance optimizations) ⚡
+- Uses 2* data sources merged into one, unified API 📑
+- Implements i18n 🌐
+- Features strong focus on accessibility 👍
+- Fully customizable 🛠️
+- Pleasing, fully responsive design 💅
+- Written in TypeScript
 
 ## Development
 
@@ -62,6 +72,14 @@ $ npm test
     	- [x] Investigate the `Navigator.share()` API
 	- [x] Information about WHO standards
 - [x] i18n
+
+## Technology stack
+
+- [**React**](https://reactjs.org/) for UI;
+- [**Next.js**](https://nextjs.org/) for SSG, dynamic routes and much more;
+- [**Styled Components**](https://styled-components.com/) for styling;
+- [**Recoil**](https://recoiljs.org/) for state management;
+- [**MongoDB**](https://www.mongodb.com/) for storing user-generated reports.
 
 ### License
 
