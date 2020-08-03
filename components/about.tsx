@@ -65,77 +65,9 @@ const About = (): JSX.Element => {
 	const {t} = useTranslation();
 
 	const onSubmit = async (data: FormData) => {
-		isLoading(true);
+		const {submit} = await import('../utils/submit');
 
-		const {nanoid} = await import('nanoid');
-		const {fetcher} = await import('../utils/fetcher');
-		const id = nanoid(10);
-
-		const showError = async (type: 'create' | 'location'): Promise<void> => {
-			const {toast} = await import('react-toastify');
-
-			if (type === 'create') {
-				toast.error(t('home:create-error'), {
-					position: 'bottom-right',
-					autoClose: 2000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					progress: undefined
-				});
-			} else {
-				toast.error(t('home:location-error'), {
-					position: 'bottom-right',
-					autoClose: 2000,
-					hideProgressBar: false,
-					closeOnClick: true,
-					pauseOnHover: true,
-					progress: undefined
-				});
-			}
-
-			isLoading(false);
-		};
-
-		if (data.location) {
-			const response = await fetch(`https://nominatim.openstreetmap.org/search?q="${data.location}"&format=json&limit=1`);
-			const json = await response.json();
-
-			if (json.length === 0) {
-				await showError('location');
-			} else {
-				const data = await fetcher(json[0].lat, json[0].lon);
-
-				const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
-					method: 'POST',
-					body: JSON.stringify({id, date: new Date().toLocaleString('en', {hour12: false}), coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data})
-				});
-				const report = await response.json();
-
-				if (report?.message === 'OK') {
-					await router.replaceI18n(`/reports/${id}`);
-				} else {
-					await showError('create');
-				}
-			}
-		} else {
-			const {getPosition} = await import('../utils/get-position');
-			const {coords} = await getPosition();
-
-			const data = await fetcher(coords.latitude as unknown as string, coords.longitude as unknown as string);
-
-			const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
-				method: 'POST',
-				body: JSON.stringify({id, date: new Date().toLocaleString('en', {hour12: false}), ...coords, ...data})
-			});
-			const report = await response.json();
-
-			if (report?.message === 'OK') {
-				await router.replaceI18n(`/reports/${id}`);
-			} else {
-				await showError('create');
-			}
-		}
+		await submit(data, isLoading, router, {createError: t('home:create-error'), locationError: t('home:location-error')});
 	};
 
 	return (
