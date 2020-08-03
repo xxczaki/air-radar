@@ -34,12 +34,12 @@ const Box = styled.div`
 
 const Icon = styled.img`
 	width: 1rem;
+	margin-right: .5rem;
 `;
 
 const Button = styled(_Button)<{long?: boolean}>`
 	background: var(--gray);
-	width: ${props => props.long ? '8.5rem' : '7rem'};
-	justify-content: space-evenly;
+	width: ${props => props.long ? '8.5rem' : '6.8rem'};
 	margin-top: 0.8rem;
 `;
 
