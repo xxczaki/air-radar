@@ -5,8 +5,8 @@
 	"check-button": "Sprawdź",
 	"illustration-label": "Ilustracja",
 	"how-it-works": "Jak to działa?",
-	"how-it-works-description1": "Kliknij przycisk powyżej, aby otrzymać informacje na temat jakości powietrza w pobliżu. Możesz również ręcznie wprowadzić lokalizację. Air Radar korzysta z 2 zaufanych źródeł danych, aby zapewnić najnowsze i najbardziej dokładne informacje.",
-	"how-it-works-description2": "Ponadto, Air Radar jest kompletnie bezpłatny, a jego kod otwartoźródłowy. Wypróbuj go teraz!",
+	"how-it-works-description1": "Kliknij przycisk powyżej, aby wygenerować raport na temat jakości powietrza w twojej okolicy. Możesz również ręcznie wprowadzić lokalizację. Gdy raport jest już dostępny, możesz z łatwością udostępnić go znajomym.",
+	"how-it-works-description2": "Air Radar korzysta z 2 zaufanych źródeł danych, aby zapewnić najnowsze i najbardziej dokładne informacje. Ponadto jest on zupełnie bezpłatny, a jego kod w pełni otwartoźródłowy. Wypróbuj go teraz!",
 	"faq": {
 		"1": {
 			"q": "Jaki jest priorytet źródeł danych?",

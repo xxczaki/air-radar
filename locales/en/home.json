@@ -6,8 +6,8 @@
 	"create-error": "Could not create a report",
 	"illustration-label": "Illustration",
 	"how-it-works": "How it works?",
-	"how-it-works-description1": "Click the button above to get information about air quality from the sensor closest to you. You can also enter a location manually. Air Radar uses 2 trusted data sources to ensure that you will get the latest and most accurate data possible.",
-	"how-it-works-description2": "Furthermore, Air Radar is totally free and open-source. Try it out today!",
+	"how-it-works-description1": "Click the button above to generate a report about air quality in your area. You can also enter a location manually. After the report is available, you can easily share it with your friends.",
+	"how-it-works-description2": "Air Radar uses 2 trusted data sources to ensure that you will get the latest and most accurate data possible. Furthermore, it is is totally free and open-source. Try it out today!",
 	"faq": {
 		"1": {
 			"q": "What is the data sources priority?",
