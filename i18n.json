@@ -17,8 +17,14 @@
 		"/": [
 			"home"
 		],
+		"/more": [
+			"more"
+		],
 		"/preferences": [
 			"preferences"
+		],
+		"/information": [
+			"information"
 		],
 		"/reports/[id]": [
 			"report"
