@@ -1,6 +1,39 @@
 {
 	"name": "Raport",
 	"title": "Raport {{id}}",
+	"pollutants": {
+		"pm1": {
+			"description": "Najdrobniejsze cząstki z aerodynamiczną średnicą mniejszą, niż 0.1 mikrometra. Najgroźniejszy wariant drobnych cząstek ze względu na możliwość bezpośredniej transmisji do płuc przez układ krwionośny i co za tym idzie - rozprzestrzenianie się do narządów wewnętrznych."
+		},
+		"pm25": {
+			"description": "Cząstki o aerodynamicznej średnicy mniejszej, niż 2.5 mikrometra. Te drobiny zawierają wtórne aerozole i cząsteczki spalania. Najdrobniejsze z nich mogą dotrzeć do pęcherzyków płucnych.",
+			"time": "dzienna"
+		},
+		"pm10": {
+			"description": "To cząstki posiadające aerodynamiczną średnicę mniejszą, niż 10 mikrometrów. W zależności od rozmiaru mogą osiadać w płucach.",
+			"time": "dzienna"
+		},
+		"no2": {
+			"description": "Dwutlenek azotu to jeden ze związków zanieczyszczających naszą atmosferę. NO₂ powstaje poprzez emisje z samochodów osobowych, ciężarówek, autobusów, elektrowni cieplnych i sprzętu terenowego.",
+			"time": "średnia godzinna"
+		},
+		"so2": {
+			"description": "Dwutlenek siarki jest produktem spalanie siarki lub materiałów, w której ona występuje. Krótkotrwała ekspozycja na ten związek może mieć szkodliwy wpływ na układ oddechowy i utrudniać oddychanie.",
+			"time": "dzienna"
+		},
+		"o3": {
+			"description": "Ozon występuje zarówno w górnej atmosferze ziemskiej, jak również na powierzchni. W zależności od tego gdzie występuje, może być dla dobry lub zły. Przy wdychaniu powietrza, które zawiera ozon najbardziej narażeni są chorzy na astmę, dzieci, ludzie starsi i pracownicy zewnętrzni.",
+			"time": "średnia ośmiogodzinna"
+		},
+		"h2s": {
+			"description": "Siarkowodór może powstawać podczas produkcji oleju i gazów, w kanałach ściekowych, a także w przemysłach - rolniczym i rybnym. H₂S reaguje z hemoglobiną we krwi i zmniejsza dopływ tlenu do organizmu."
+		},
+		"co": {
+			"description": "Tlenek węgla występuje w oparach, które powstają przy spalaniu paliwa w samochodach osobowych lub ciężarówkach, małych silnikach, kuchenkach gazowych, piecach czy kominkach. Symptomy są często określane jako “grypopodobne”."
+		}
+	},
+	"norm": "Norma WHO",
+	"unit": "Jednostka:",
 	"information": "Dane sensora",
 	"provider": "Dostawca:",
 	"from": "Czas pomiaru:",

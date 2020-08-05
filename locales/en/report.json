@@ -1,6 +1,39 @@
 {
 	"name": "Report",
 	"title": "Report {{id}}",
+	"pollutants": {
+		"pm1": {
+			"description": "Ultrafine particles with an aerodynamic diameter less than 0.1 micrometers. The most damaging variant of fine particles because the particles penetrate directly through the lungs into the bloodstream and are thus spread to the organs."
+		},
+		"pm25": {
+			"description": "Particles with an aerodynamic diameter less than 2.5 micrometers. These particles contain secondary aerosols and combustion particles. Fine particles can reach the pulmonary alveoli.",
+			"time": "daily"
+		},
+		"pm10": {
+			"description": "These are particles having an aerodynamic diameter of less than 10 micrometers. Depending on their size, the particles remain in the lungs.",
+			"time": "daily"
+		},
+		"no2": {
+			"description": "Nitrogen Dioxide is one of the compounds polluting our atmosphere. NO₂ forms from emissions from cars, trucks and buses, power plants, and off-road equipment.",
+			"time": "1-hour mean"
+		},
+		"so2": {
+			"description": "Sulfur dioxide results from the burning of either sulfur or materials containing sulfur. Short-term exposures to this compound can harm the human respiratory system and make breathing difficult.",
+			"time": "daily"
+		},
+		"o3": {
+			"description": "Ozone occurs both in the Earth's upper atmosphere and at ground level. It can be good or bad, depending on where it is found. People most at risk from breathing air containing ozone include people with asthma, children, older adults, and people who are active outdoors, especially outdoor workers.",
+			"time": "8-hour mean"
+		},
+		"h2s": {
+			"description": "Hydrogen sulfide gas may be encountered during production of oil and gas, sewage and septic pits, in the fishing industry and farming. The H₂S reacts with the hemoglobin in the blood and reduces the body’s oxygen supply."
+		},
+		"co": {
+			"description": "Carbon Monoxide is found in fumes produced any time you burn fuel in cars or trucks, small engines, stoves, lanterns, grills, fireplaces, gas ranges, or furnaces. CO Symptoms are often described as “flu-like”."
+		}
+	},
+	"norm": "WHO Norm",
+	"unit": "Unit:",
 	"information": "Sensor information",
 	"provider": "Provider:",
 	"from": "Measurement time:",
