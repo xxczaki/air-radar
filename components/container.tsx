@@ -53,8 +53,8 @@ const Container = ({children, reports}: Props): JSX.Element => {
 						<Logo src={cloudOutline} draggable={false} alt="Flash"/>
 					</Link>
 					<Nav>
-						<NavLink title={t('common:home')} href="/" lang={language}/>
-						<NavLink title={t('common:preferences')} href="/preferences" lang={language}/>
+						<NavLink title={t('common:home') === 'common:home' ? 'Home' : t('common:home')} href="/" lang={language}/>
+						<NavLink title={t('common:more') === 'common:more' ? 'More' : t('common:more')} href="/more" lang={language}/>
 					</Nav>
 				</Wrapper>
 			</Header>
