@@ -73,8 +73,14 @@ $ npm test
     	- [x] Generate Open Graph images
     	- [x] Investigate the `Navigator.share()` API
 	- [x] Information about WHO standards
-- [x] i18n
-- [ ] Persist global state
+- [ ] Other pages
+	- [ ] Allow adding custom-made air pollution sensors
+	- [ ] Manage locally created reports
+	- [ ] Create information page (**WIP**)
+- [ ] i18n (long-standing task)
+- [ ] Persist global state (possibly blocked by Recoil API changes)
+- [ ] Secure API routes (only the ones that need to be secured)
+- [ ] Improve language-based redirection
 
 ## Technology stack
 
