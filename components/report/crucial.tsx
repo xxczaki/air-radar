@@ -95,7 +95,43 @@ const Crucial = ({coords, current, sensor}: Except<Response, 'forecast' | 'id' |
 								interactive
 								arrow
 								position="top"
-								html={<Description name={element.name} value={element.value}/>}
+								html={<Description
+									name={element.name}
+									value={element.value}
+									details={{
+										pm1: {
+											description: t('report:pollutants.pm1.description')
+										},
+										pm25: {
+											description: t('report:pollutants.pm25.description'),
+											time: t('report:pollutants.pm25.time')
+										},
+										pm10: {
+											description: t('report:pollutants.pm10.description'),
+											time: t('report:pollutants.pm10.time')
+										},
+										no2: {
+											description: t('report:pollutants.no2.description'),
+											time: t('report:pollutants.no2.time')
+										},
+										so2: {
+											description: t('report:pollutants.so2.description'),
+											time: t('report:pollutants.so2.time')
+										},
+										o3: {
+											description: t('report:pollutants.o3.description'),
+											time: t('report:pollutants.o3.time')
+										},
+										h2s: {
+											description: t('report:pollutants.h2s.description')
+										},
+										co: {
+											description: t('report:pollutants.co.description')
+										},
+										norm: t('report:norm'),
+										unit: t('report:unit')
+									}}
+								/>}
 							>
 								<Value background={current.indexes[0].color}>
 									<p>{element.name}</p>
