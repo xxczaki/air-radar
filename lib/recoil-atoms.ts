@@ -1,13 +1,18 @@
 import {atom, selector} from 'recoil';
 
-export const unit = atom({
+export const unit = atom<'km' | 'm' | 'mi'>({
 	key: 'unit',
 	default: 'km'
 });
 
-export const language = atom({
+export const language = atom<'en' | 'pl'>({
 	key: 'language',
 	default: 'en'
+});
+
+export const _reports = atom<string[]>({
+	key: 'reports',
+	default: []
 });
 
 export const updateUnit = selector({
