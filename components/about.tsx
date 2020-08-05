@@ -5,6 +5,7 @@ import {SimpleImg} from 'react-simple-img';
 import {useForm} from 'react-hook-form';
 import router from 'next-translate/Router';
 import useTranslation from 'next-translate/useTranslation';
+import {useRecoilState} from 'recoil';
 
 import Header from './header';
 import {
@@ -13,8 +14,10 @@ import {
 	Input,
 	Label
 } from './form';
+import Divider from './divider';
 import Details from './details';
 import ExtLink from './extlink';
+import {_reports} from '../lib/recoil-atoms';
 
 import illustration from '../public/images/undraw-illustration.svg';
 
@@ -47,27 +50,21 @@ const Image = styled(SimpleImg)`
 	}
 `;
 
-const Divider = styled.hr`
-	border: none;
-	padding: var(--gap-double);
-
-	&::after {
-		content: "• • •";
-		color: var(--light-gray);
-		font-size: 24px;
-		letter-spacing: 12px;
-	}
-`;
-
 const About = (): JSX.Element => {
 	const [loading, isLoading] = useState(false);
 	const {register, handleSubmit} = useForm<FormData>();
+	const [reports, setReports] = useRecoilState(_reports);
 	const {t} = useTranslation();
 
 	const onSubmit = async (data: FormData) => {
 		const {submit} = await import('../utils/submit');
 
-		await submit(data, isLoading, router, {createError: t('home:create-error'), locationError: t('home:location-error')});
+		await submit(data, isLoading, router, {
+			createError: t('home:create-error'),
+			locationError: t('home:location-error'),
+			reports,
+			onSuccess: setReports
+		});
 	};
 
 	return (
