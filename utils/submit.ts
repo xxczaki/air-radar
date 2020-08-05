@@ -6,9 +6,11 @@ import {fetcher} from './fetcher';
 interface Options {
 	createError: string;
 	locationError: string;
+	reports: string[];
+	onSuccess: (arr: string[]) => void;
 }
 
-export const submit = async (data: {location?: string}, loadingFn: (isLoading: boolean) => void, router: typeof Router, {createError, locationError}: Options) => {
+export const submit = async (data: {location?: string}, loadingFn: (isLoading: boolean) => void, router: typeof Router, {createError, locationError, reports, onSuccess}: Options) => {
 	loadingFn(true);
 
 	const id = nanoid(10);
@@ -31,6 +33,8 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 			const report = await response.json();
 
 			if (report?.message === 'OK') {
+				onSuccess([...reports, id]);
+
 				await router.replaceI18n(`/reports/${id}`);
 			} else {
 				const {showError} = await import('./show-error');
@@ -51,6 +55,8 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 		const report = await response.json();
 
 		if (report?.message === 'OK') {
+			onSuccess([...reports, id]);
+
 			await router.replaceI18n(`/reports/${id}`);
 		} else {
 			const {showError} = await import('./show-error');
