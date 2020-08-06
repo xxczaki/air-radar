@@ -31,10 +31,10 @@ const Index: NextPage<unknown> = () => {
 					<li>using the Geolocation API*</li>
 					<li>manually entering a desired location</li>
 				</ul>
-				<p>* required browser permission to be granted.</p>
+				<p>* requires browser permission to be granted.</p>
 				<p>If the second option is chosen, Air Radar will use a third-party service (Nominatim) to obtain the geographic coordinates from the given location. Their privacy policy can be found here.</p>
 				<b>Air Radar does not use IP-based location lookup.</b>
-				<p>Regardless of the way chosen, the coordinates will a part of the report, which is saved in a database. Since the report itself already contains air quality data, the coordinates are only used to show an interactive map and calculate a distance between the provided location and the air quality sensor.</p>
+				<p>Regardless of the way chosen, the coordinates will be a part of the report, which is saved in a database. Since the report itself already contains air quality data, the coordinates are only used to show an interactive map and calculate a distance between the provided location and the air quality sensor.</p>
 				<p>The connection between the site and the database is encrypted and the access credentials are strong and periodically changed for further security.</p>
 				<h3>Deleting reports</h3>
 				<p>Reports created by the user are saved in the browser and can be seen and managed (therefore also deleted) on the history page. In case the user clears the browser storage and still wants to delete a report, they can contact the site administrator at <i>a@kepinski.me</i> with a unique report ID, or, in case they do not have it, with other details, which can help find the report (such as, but not limited to: the time, when the report was created). The administrator will remove the report from the database within 48 hours.</p>
