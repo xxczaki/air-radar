@@ -75,8 +75,8 @@ $ npm test
 	- [x] Information about WHO standards
 - [ ] Other pages
 	- [ ] Allow adding custom-made air pollution sensors
-	- [ ] Manage locally created reports
-	- [ ] Create information page (**WIP**)
+	- [ ] Manage locally created reports (blocked by state persistance)
+	- [x] Privacy policy
 - [ ] i18n (long-standing task)
 - [ ] Persist global state (possibly blocked by Recoil API changes)
 - [ ] Secure API routes (only the ones that need to be secured)
