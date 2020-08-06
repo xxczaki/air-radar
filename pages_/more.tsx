@@ -89,19 +89,19 @@ const Index: NextPage<unknown> = () => {
 						</Box>
 					</Link>
 					<Abbreviation title="Coming soon!">
-					<Box disabled>
-						<Icon
-							src={add}
-							placeholder="var(--gray)"
-							// @ts-expect-error
-							draggable={false}
-							alt={t('more:alt')}
-							height="3.5rem"
-						/>
-						<h2>{t('more:add-sensor')}</h2>
-					</Box>
+						<Box disabled>
+							<Icon
+								src={add}
+								placeholder="var(--gray)"
+								// @ts-expect-error
+								draggable={false}
+								alt={t('more:alt')}
+								height="3.5rem"
+							/>
+							<h2>{t('more:add-sensor')}</h2>
+						</Box>
 					</Abbreviation>
-					<Link href="/information" lang={lang}>
+					<Link href="/privacy" lang={lang}>
 						<Box>
 							<Icon
 								src={information}
@@ -111,7 +111,7 @@ const Index: NextPage<unknown> = () => {
 								alt={t('more:alt')}
 								height="3.5rem"
 							/>
-							<h2>{t('more:information')}</h2>
+							<h2>{t('more:privacy')}</h2>
 						</Box>
 					</Link>
 				</Wrapper>
