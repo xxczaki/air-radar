@@ -2,16 +2,16 @@ import React from 'react';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
 import {darken} from 'polished';
-import LatLon from 'geodesy/latlon-ellipsoidal-vincenty';
 import useTranslation from 'next-translate/useTranslation';
+import {useRecoilState} from 'recoil';
 import {Except} from 'type-fest';
 
 import ExtLink from '../extlink';
 import Description from './description';
 import {humanizeLevel} from '../../utils/humanize';
 import {Response} from '../../utils/fetcher';
-import {usePreferences} from '../../hooks/use-preferences';
 import {convert} from '../../utils/convert';
+import {_unit} from '../../lib/recoil-atoms';
 
 const Tooltip = dynamic(async () => {
 	const {Tooltip} = await import('react-tippy');
@@ -75,12 +75,9 @@ const Value = styled.div<BoxProps>`
 	}
 `;
 
-const Crucial = ({coords, current, sensor}: Except<Response, 'forecast' | 'id' | 'date'>): JSX.Element => {
+const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id' | 'date'>): JSX.Element => {
 	const {t} = useTranslation();
-	const {unit} = usePreferences();
-
-	const location = new LatLon(coords.latitude, coords.longitude);
-	const _sensor = new LatLon(sensor.latitude as number, sensor.longitude as number);
+	const [unit] = useRecoilState(_unit);
 
 	return (
 		<Wrapper>
@@ -146,8 +143,8 @@ const Crucial = ({coords, current, sensor}: Except<Response, 'forecast' | 'id' |
 				<h1>{t('report:information')}</h1>
 				<InfoBox>
 					<p>{t('report:provider')} <ExtLink href={sensor.provider === 'airly' ? 'https://map.airly.eu' : 'https://aqicn.org/'}><b>{sensor.provider === 'airly' ? 'Airly' : 'World Air Quality Index'}</b></ExtLink></p>
-					<p>{t('report:from')} <b>{current.time}</b></p>
-					<p>{t('report:distance')} <b>{sensor.provider === 'airly' ? 'N/A' : convert(location.distanceTo(_sensor), unit)}</b></p>
+					<p>{t('report:from')} <b>{current.time === 'Invalid date' ? 'N/A' : current.time}</b></p>
+					<p>{t('report:distance')} <b>{sensor.distance === 'N/A' ? 'N/A' : convert(sensor.distance as number, unit)}</b></p>
 				</InfoBox>
 			</Box>
 		</Wrapper>
