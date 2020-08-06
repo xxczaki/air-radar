@@ -15,7 +15,7 @@ const fetchDocuments = async (request: NextApiRequest, response: NextApiResponse
 		if (request.method === 'POST') {
 			// MongoDB `find` !== Array.find
 			// eslint-disable-next-line unicorn/no-fn-reference-in-iterator
-			response.status(200).json({report: JSON.stringify(await db.collection(process.env.DB_COLLECTION ?? '').find({id: request.body}).toArray())});
+			response.status(200).json({report: JSON.stringify(await db.collection(process.env.DB_COLLECTION ?? '').find({_id: request.body}).toArray())});
 		} else {
 			response.status(200).json({report: JSON.stringify(await db.collection(process.env.DB_COLLECTION ?? '').find().toArray())});
 		}
