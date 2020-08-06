@@ -23,8 +23,8 @@
 		"/preferences": [
 			"preferences"
 		],
-		"/information": [
-			"information"
+		"/privacy": [
+			"privacy"
 		],
 		"/reports/[id]": [
 			"report"

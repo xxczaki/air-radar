@@ -51,6 +51,10 @@ const Box = styled.a<Props>`
 	}
 `;
 
+const Abbreviation = styled.abbr`
+	text-decoration: none;
+`;
+
 const Index: NextPage<unknown> = () => {
 	const {t, lang} = useTranslation();
 
@@ -84,6 +88,7 @@ const Index: NextPage<unknown> = () => {
 							<h2>{t('more:preferences')}</h2>
 						</Box>
 					</Link>
+					<Abbreviation title="Coming soon!">
 					<Box disabled>
 						<Icon
 							src={add}
@@ -95,6 +100,7 @@ const Index: NextPage<unknown> = () => {
 						/>
 						<h2>{t('more:add-sensor')}</h2>
 					</Box>
+					</Abbreviation>
 					<Link href="/information" lang={lang}>
 						<Box>
 							<Icon
