@@ -1,5 +1,5 @@
-import {nanoid} from 'nanoid';
 import Router from 'next-translate/Router';
+import {encode} from 'base64-arraybuffer';
 
 import {fetcher} from './fetcher';
 
@@ -13,7 +13,22 @@ interface Options {
 export const submit = async (data: {location?: string}, loadingFn: (isLoading: boolean) => void, router: typeof Router, {createError, locationError, reports, onSuccess}: Options) => {
 	loadingFn(true);
 
-	const id = nanoid(10);
+	const key = await window.crypto.subtle.generateKey(
+		{name: 'AES-GCM', length: 128},
+		true, // Extractable
+		['encrypt', 'decrypt']
+	);
+	const objectKey = (await window.crypto.subtle.exportKey('jwk', key)).k;
+
+	const encrypt = async (body: any): Promise<ArrayBuffer> => {
+		const encrypted = await window.crypto.subtle.encrypt(
+			{name: 'AES-GCM', iv: new Uint8Array(12) /* don't reuse key! */},
+			key,
+			new TextEncoder().encode(JSON.stringify(body))
+		);
+
+		return encrypted;
+	};
 
 	if (data.location) {
 		const response = await fetch(`https://nominatim.openstreetmap.org/search?q="${data.location}"&format=json&limit=1`);
@@ -28,14 +43,14 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 
 			const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
 				method: 'POST',
-				body: JSON.stringify({id, date: new Date().toLocaleString('en', {hour12: false}), coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data})
+				body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data}))
 			});
 			const report = await response.json();
 
 			if (report?.message === 'OK') {
-				onSuccess([...reports, id]);
+				onSuccess([...reports, report.id]);
 
-				await router.replaceI18n(`/reports/${id}`);
+				await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
 			} else {
 				const {showError} = await import('./show-error');
 
@@ -50,14 +65,14 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 
 		const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
 			method: 'POST',
-			body: JSON.stringify({id, date: new Date().toLocaleString('en', {hour12: false}), ...coords, ...data})
+			body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), ...coords, ...data}))
 		});
 		const report = await response.json();
 
 		if (report?.message === 'OK') {
-			onSuccess([...reports, id]);
+			onSuccess([...reports, report.id]);
 
-			await router.replaceI18n(`/reports/${id}`);
+			await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
 		} else {
 			const {showError} = await import('./show-error');
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {NextPage, GetStaticPaths, GetStaticProps} from 'next';
 import dynamic from 'next/dynamic';
 import {useRouter} from 'next/router';
@@ -38,7 +38,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 		const paths = JSON.parse(reports.report).map((report: any) => {
 			return {
-				params: {id: report.id ?? ''}
+				params: {id: report._id ?? ''}
 			};
 		});
 
@@ -65,44 +65,107 @@ export const getStaticProps: GetStaticProps = async ({params}) => {
 const Index: NextPage<Props> = (props: Readonly<Props>) => {
 	const {data} = props;
 
+	const [report, setReport] = useState<Response | 'Decrypting...' | 'Fail' | undefined>('Decrypting...');
 	const {t} = useTranslation();
 	const router = useRouter();
 
-	const report: Response = data?.report ? JSON.parse(data?.report)[0] : undefined;
+	useEffect(() => {
+		(async () => {
+			if (data?.report) {
+				const objectKey = window.location.hash.slice('#key='.length);
+
+				if (objectKey.length > 0) {
+					try {
+						const {decode} = await import('base64-arraybuffer');
+
+						const parsed = JSON.parse(data?.report)[0];
+						const encrypted = decode(parsed.report);
+
+						const key = await window.crypto.subtle.importKey(
+							'jwk',
+							{
+								k: objectKey,
+								alg: 'A128GCM',
+								ext: true,
+								key_ops: ['encrypt', 'decrypt'],
+								kty: 'oct'
+							},
+							{name: 'AES-GCM', length: 128},
+							false,
+							['decrypt']
+						);
+
+						const decrypted = await window.crypto.subtle.decrypt(
+							{name: 'AES-GCM', iv: new Uint8Array(12)},
+							key,
+							encrypted
+						);
+						const decoded = new window.TextDecoder().decode(new Uint8Array(decrypted));
+						const content = JSON.parse(decoded);
+
+						setReport({id: parsed._id, key: objectKey, ...content});
+					} catch {
+						setReport('Fail');
+					}
+				} else {
+					setReport('Fail');
+				}
+			} else {
+				setReport(undefined);
+			}
+		})();
+	}, [data?.report]);
+
+	if (router.isFallback || report === 'Decrypting...') {
+		return <WrappedSpinner/>;
+	}
+
+	if (report === 'Fail') {
+		return (
+			<Container>
+				<Main>
+					<h1>Decryption failed</h1>
+					<p>Could not decrypt the report. Make sure you entered the correct URL.</p>
+				</Main>
+			</Container>
+		);
+	}
+
+	if (report) {
+		return (
+			<Container>
+				<Main>
+					<Head>
+						<link rel="preconnect" href="https://api.mapbox.com"/>
+						<link href="https://api.mapbox.com/mapbox-gl-js/v0.54.1/mapbox-gl.css" rel="stylesheet"/>
+						<title>{t('report:title', {id: report.id})}</title>
+						<meta property="og:image" content={`https://og.kepinski.me/${t('report:name')}.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fair-radar.vercel.app%2Fimages%2Fcloud-outline.svg`}/>
+						<meta name="twitter:image" content={`https://og.kepinski.me/${t('report:name')}.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fair-radar.vercel.app%2Fimages%2Fcloud-outline.svg`}/>
+					</Head>
+					<ReportContainer>
+						<OpenMap
+							location={{
+								latitude: report.coords.latitude,
+								longitude: report.coords.longitude
+							}}
+							sensor={{
+								latitude: report.sensor.latitude as number,
+								longitude: report.sensor.longitude as number
+							}}
+							color={report.current.indexes[0].color as string}
+						/>
+						<Report id={report.id} date={report.date} current={report.current} sensor={report.sensor}/>
+					</ReportContainer>
+				</Main>
+			</Container>
+		);
+	}
 
 	return (
 		<Container>
 			<Main>
-				{router.isFallback ? <WrappedSpinner/> : (report ? (
-					<>
-						<Head>
-							<link rel="preconnect" href="https://api.mapbox.com"/>
-							<link href="https://api.mapbox.com/mapbox-gl-js/v0.54.1/mapbox-gl.css" rel="stylesheet"/>
-							<title>{t('report:title', {id: report.id})}</title>
-							<meta property="og:image" content={`https://og.kepinski.me/${t('report:name')}.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fair-radar.vercel.app%2Fimages%2Fcloud-outline.svg`}/>
-							<meta name="twitter:image" content={`https://og.kepinski.me/${t('report:name')}.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fair-radar.vercel.app%2Fimages%2Fcloud-outline.svg`}/>
-						</Head>
-						<ReportContainer>
-							<OpenMap
-								location={{
-									latitude: report.coords.latitude,
-									longitude: report.coords.longitude
-								}}
-								sensor={{
-									latitude: report.sensor.latitude as number,
-									longitude: report.sensor.longitude as number
-								}}
-								color={report.current.indexes[0].color as string}
-							/>
-							<Report id={report.id} date={report.date} coords={report.coords} current={report.current} sensor={report.sensor}/>
-						</ReportContainer>
-					</>
-				) : (
-					<>
-						<h1>Report not found</h1>
-						<p>You can try generating one on the home page.</p>
-					</>
-				))}
+				<h1>Report not found</h1>
+				<p>You can try generating one on the home page.</p>
 			</Main>
 		</Container>
 	);
