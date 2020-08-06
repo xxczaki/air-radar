@@ -133,7 +133,7 @@ Router.events.on('routeChangeError', () => {
 });
 
 const CustomApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
-	const [state, setState] = useState<State | 'Loading...' | undefined>('Loading...');
+	const [state, setState] = useState<State | 'Empty' | undefined>(undefined);
 
 	useEffect(() => {
 		const previousState = localStorage.getItem('state');
@@ -141,7 +141,7 @@ const CustomApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
 		if (previousState) {
 			setState(JSON.parse(previousState));
 		} else {
-			setState(undefined);
+			setState('Empty');
 		}
 	}, []);
 
