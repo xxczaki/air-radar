@@ -1,6 +1,7 @@
 'use strict';
 
 import Airly from 'airly';
+import LatLon from 'geodesy/latlon-ellipsoidal-vincenty';
 import {Except} from 'type-fest';
 
 import {analyzeAqi} from './analyze-aqi';
@@ -44,6 +45,7 @@ export interface Response {
 			name: string;
 			logo: string;
 		}>>;
+		distance: number | 'N/A';
 	}>;
 }
 
@@ -86,11 +88,21 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 				advice: aqiDescription.advice,
 				color: aqiDescription.color
 			}];
-			const sensor = {
+
+			const sensorCoords = {
 				latitude: data.data.city.geo[0] as number,
-				longitude: data.data.city.geo[1] as number,
+				longitude: data.data.city.geo[1] as number
+			};
+
+			const location = new LatLon(lat, lng);
+			const _sensor = new LatLon(sensorCoords.latitude, sensorCoords.longitude);
+
+			const sensor = {
+				latitude: sensorCoords.latitude,
+				longitude: sensorCoords.longitude,
 				provider: 'waqi',
-				attributions: data.data.attributions
+				attributions: data.data.attributions,
+				distance: location.distanceTo(_sensor)
 			};
 
 			return {
@@ -133,7 +145,8 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 				time: new Date(data.current.fromDateTime).toLocaleTimeString('en', {hour: '2-digit', minute: '2-digit', hour12: false})
 			},
 			sensor: {
-				provider: 'airly'
+				provider: 'airly',
+				distance: 'N/A'
 			}
 		};
 	}
