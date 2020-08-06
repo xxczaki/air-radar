@@ -2,12 +2,13 @@ import React from 'react';
 import Link from 'next-translate/Link';
 import styled from 'styled-components';
 import useTranslation from 'next-translate/useTranslation';
+import {useRecoilState, useRecoilTransactionObserver_UNSTABLE} from 'recoil';
 
 import Logo from './logo';
 import Nav from './nav';
 import NavLink from './navlink';
 import Footer from './footer';
-import {usePreferences} from '../hooks/use-preferences';
+import {_unit, _language, _reports} from '../lib/recoil-atoms';
 
 import cloudOutline from '../public/images/cloud-outline.svg';
 
@@ -43,7 +44,15 @@ const Wrapper = styled.div`
 
 const Container = ({children, reports}: Props): JSX.Element => {
 	const {t} = useTranslation();
-	const {language} = usePreferences();
+	const [language] = useRecoilState(_language);
+
+	useRecoilTransactionObserver_UNSTABLE(({snapshot}) => {
+		const unit = snapshot.getLoadable(_unit).contents;
+		const language = snapshot.getLoadable(_language).contents;
+		const reports = snapshot.getLoadable(_reports).contents;
+
+		localStorage.setItem('state', JSON.stringify({unit, language, reports}));
+	});
 
 	return (
 		<>

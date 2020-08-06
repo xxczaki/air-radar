@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {NextPage} from 'next';
 import {AppProps} from 'next/app';
 import Head from 'next/head';
@@ -11,10 +11,17 @@ import debounce from 'lodash.debounce';
 import nprogress from 'nprogress';
 
 // TODO: Add `import Container from '../components/container';`. See: https://github.com/vinissimus/next-translate/issues/214#issuecomment-652416113
+import {_unit, _language, _reports} from '../lib/recoil-atoms';
 
 // Assets
 import 'react-toastify/dist/ReactToastify.min.css';
 import 'react-tippy/dist/tippy.css';
+
+interface State {
+	unit: 'km' | 'm' | 'mi';
+	language: 'pl' | 'en';
+	reports: string[];
+}
 
 const GlobalStyle = createGlobalStyle`
 	:root {
@@ -125,17 +132,41 @@ Router.events.on('routeChangeError', () => {
 	nprogress.done();
 });
 
-const CustomApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => (
-	<SkeletonTheme color="var(--gray)" highlightColor="#424242">
-		<GlobalStyle/>
-		<ToastContainer/>
-		<Head>
-			<title>Air Radar</title>
-		</Head>
-		<RecoilRoot>
-			<Component {...pageProps}/>
-		</RecoilRoot>
-	</SkeletonTheme>
-);
+const CustomApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
+	const [state, setState] = useState<State | 'Loading...' | undefined>('Loading...');
+
+	useEffect(() => {
+		const previousState = localStorage.getItem('state');
+
+		if (previousState) {
+			setState(JSON.parse(previousState));
+		} else {
+			setState(undefined);
+		}
+	}, []);
+
+	return (
+		<SkeletonTheme color="var(--gray)" highlightColor="#424242">
+			<GlobalStyle/>
+			<ToastContainer/>
+			<Head>
+				<title>Air Radar</title>
+			</Head>
+			{state && (
+				<RecoilRoot
+					initializeState={({set}) => {
+						if (state && typeof state !== 'string') {
+							set(_unit, state.unit);
+							set(_language, state.language);
+							set(_reports, state.reports);
+						}
+					}}
+				>
+					<Component {...pageProps}/>
+				</RecoilRoot>
+			)}
+		</SkeletonTheme>
+	);
+};
 
 export default CustomApp;
