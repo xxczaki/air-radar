@@ -49,7 +49,7 @@ const Share = ({id, date}: Props): JSX.Element => {
 
 	const copy = async () => {
 		try {
-			await navigator.clipboard.writeText(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/reports/${id}`);
+			await navigator.clipboard.writeText(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/reports/${id}#key=${window.location.hash.slice('#key='.length)}`);
 
 			toast.success(t('report:copy-success'), {
 				position: 'bottom-right',
