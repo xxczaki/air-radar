@@ -35,7 +35,7 @@ The following environmental variables need to be provided:
 * `DB_NAME` - Database name.
 * `DB_COLLECTION` - Collection name.
 * `NEXT_PUBLIC_AIRLY_KEY` - [Airly API](https://developer.airly.eu/) key.
-* `NEXT_PUBLIC_WAQI_KEY` - [Air Quality Open Data Platform API](https://aqicn.org/api/) token.
+* `NEXT_PUBLIC_WAQI_TOKEN` - [Air Quality Open Data Platform API](https://aqicn.org/api/) token.
 * `NEXT_PUBLIC_MAPBOX_TOKEN` - [Mapbox](https://www.mapbox.com/) API token.
 
 You can use the [`.env.local`](https://nextjs.org/docs/basic-features/environment-variables#loading-environment-variables) file for this.
