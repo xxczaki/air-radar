@@ -26,6 +26,9 @@
 		"/privacy": [
 			"privacy"
 		],
+		"/security": [
+			"security"
+		],
 		"/reports/[id]": [
 			"report"
 		]

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import {SimpleImg} from 'react-simple-img';
 import {useForm} from 'react-hook-form';
 import router from 'next-translate/Router';
+import Link from 'next-translate/Link';
 import useTranslation from 'next-translate/useTranslation';
 import {useRecoilState} from 'recoil';
 
@@ -20,6 +21,7 @@ import ExtLink from './extlink';
 import {_reports} from '../lib/recoil-atoms';
 
 import illustration from '../public/images/undraw-illustration.svg';
+import shield from '../public/images/shield-checkmark.svg';
 
 const Spinner = dynamic(async () => import('./form/spinner'));
 
@@ -50,11 +52,30 @@ const Image = styled(SimpleImg)`
 	}
 `;
 
+const InfoBox = styled.a`
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	margin-top: var(--gap);
+	cursor: pointer;
+	transition: opacity var(--transition);
+
+	b {
+		font-size: 1rem;
+		margin-left: .5rem;
+	}
+
+	&:hover {
+		opacity: 0.8;
+	}
+`;
+
 const About = (): JSX.Element => {
 	const [loading, isLoading] = useState(false);
 	const {register, handleSubmit} = useForm<FormData>();
 	const [reports, setReports] = useRecoilState(_reports);
-	const {t} = useTranslation();
+	const {t, lang} = useTranslation();
 
 	const onSubmit = async (data: FormData) => {
 		const {submit} = await import('../utils/submit');
@@ -76,6 +97,19 @@ const About = (): JSX.Element => {
 						<Label>{t('home:location')}</Label>
 						<Input ref={register()} type="text" name="location" aria-label={t('home:location-label')} aria-required="false" placeholder="Times Square, New York"/>
 						<Button type="submit">{loading ? <Spinner/> : t('home:check-button')}</Button>
+						<Link href="/security" lang={lang}>
+							<InfoBox>
+								<SimpleImg
+									src={shield}
+									placeholder="var(--background)"
+									// @ts-expect-error
+									draggable={false}
+									alt={t('home:illustration-label')}
+									height="1.3rem"
+								/>
+								<b>{t('home:encryption')}</b>
+							</InfoBox>
+						</Link>
 					</Form>
 				</Box>
 				<Image

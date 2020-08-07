@@ -3,6 +3,7 @@
 	"location-error": "Location not found",
 	"location-label": "Location you want to check the air quality for",
 	"check-button": "Check",
+	"encryption": "End-to-end encrypted",
 	"create-error": "Could not create a report",
 	"illustration-label": "Illustration",
 	"how-it-works": "How it works?",
@@ -36,7 +37,7 @@
 		"4": {
 			"q": "Does this tool collect any personal data?",
 			"a": {
-				"1": "No, Air Radar does not collect nor store any private information, such as your IP address. Our code is also fully open-source.",
+				"1": "No, Air Radar does not collect nor store any private information, such as your IP address. The exception is the location, which you provide when generating the report. However, since we utilize end-to-end encryption, you don't need to worry. Furthermore, our code is also fully open-source.",
 				"2": "However, we use some third-party services, which might do so. You can check their privacy policies below:",
 				"3": "part of OpenStreetMap Foundation"
 			}

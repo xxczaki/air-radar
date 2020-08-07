@@ -3,6 +3,7 @@
 	"location-error": "Lokalizacja nie została znaleziona",
 	"location-label": "Lokalizacja, dla której chcesz sprawdzić jakość powietrza",
 	"check-button": "Sprawdź",
+	"encryption": "Szyfrowane end-to-end",
 	"illustration-label": "Ilustracja",
 	"how-it-works": "Jak to działa?",
 	"how-it-works-description1": "Kliknij przycisk powyżej, aby wygenerować raport na temat jakości powietrza w twojej okolicy. Możesz również ręcznie wprowadzić lokalizację. Gdy raport jest już dostępny, możesz z łatwością udostępnić go znajomym.",
@@ -35,7 +36,7 @@
 		"4": {
 			"q": "Czy to narzędzia zbiera prywatne dane?",
 			"a": {
-				"1": "Nie, Air Radar nie zbiera ani nie przechowuje żadnych prywatnych informacji, takich jak np. twój adres IP. Nasz kod jest również w pełni otwartoźródłowy.",
+				"1": "Nie, Air Radar nie zbiera ani nie przechowuje żadnych prywatnych informacji, takich jak np. twój adres IP. Wyjątkiem jest lokalizacja, którą podasz przy generowaniu raportu. Stosujemy szyfrowanie end-to-end, więc nie masz się czego obawiać. Ponadto nasz kod jest również w pełni otwartoźródłowy.",
 				"2": "Niemniej jednak korzystamy z usług firm trzecich, które mogą to robić. Możesz zapoznać się z ich politykami prywatności poniżej:",
 				"3": "część OpenStreetMap Foundation"
 			}

@@ -1,0 +1,10 @@
+{
+	"title": "Security",
+	"description-1": "Air Radar requires a location in order to function. Users can use the Geolocation API or manually enter it. Either way, we feel like this sort of data is private and should be kept safe.",
+	"description-2": "That is why we use",
+	"description-3": "end-to-end encryption",
+	"description-4": "- meaning the data is encrypted before being sent to the server, so that no one - even the site administrator - can see your location.",
+	"description-5": "The key used for encryption and decryption does not get sent to the server.",
+	"description-6": "You can learn more in our",
+	"description-7": "privacy policy"
+}

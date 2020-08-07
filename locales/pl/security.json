@@ -1,0 +1,10 @@
+{
+	"title": "Bezpieczeństwo",
+	"description-1": "Air Radar wymaga lokalizacji, żeby funkcjonować. Użytkownicy mogą skorzystać z Geolocation API, bądź manualnie wprowadzić pożądaną lokalizację. Niezależnie od wybranej metody uważamy, że dane tego typu są prywatne i powinny być chronione.",
+	"description-2": "Dlatego też używamy",
+	"description-3": "szyfrowania end-to-end",
+	"description-4": "- oznacza to, że dane są szyfrowane przed opuszczeniem strony, dzięki czemu nikt - nawet administrator - nie może zobaczyć twojej lokalizacji.",
+	"description-5": "Klucz używany do szyfrowania i deszyfrowania danych nigdy nie jest przesyłany do serwera.",
+	"description-6": "Dowiedz się więcej w naszej",
+	"description-7": "polityce prywatności"
+}

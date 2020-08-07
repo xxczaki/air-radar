@@ -4,7 +4,7 @@ const Form = styled.form`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	height: 10rem;
+	height: 12rem;
 	width: 100%;
 
 	input[type=checkbox] {
