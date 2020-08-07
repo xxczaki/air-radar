@@ -5,6 +5,7 @@ import LatLon from 'geodesy/latlon-ellipsoidal-vincenty';
 import {Except} from 'type-fest';
 
 import {analyzeAqi} from './analyze-aqi';
+import {formatDate} from './format-date';
 
 const airly = new Airly(process.env.NEXT_PUBLIC_AIRLY_KEY ?? '');
 
@@ -114,7 +115,7 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 					values,
 					indexes,
 					standards: [],
-					time: new Date(data.data.time.s).toLocaleTimeString('en', {hour: '2-digit', minute: '2-digit', hour12: false})
+					time: await formatDate(data.data.time.s)
 				},
 				sensor
 			};
@@ -142,7 +143,7 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 				values: data.current.values.filter((element: {name: string; value: number}) => names[element.name]).map((element: {name: string; value: number}) => {
 					return {name: names[element.name], value: element.value};
 				}),
-				time: new Date(data.current.fromDateTime).toLocaleTimeString('en', {hour: '2-digit', minute: '2-digit', hour12: false})
+				time: await formatDate(data.current.fromDateTime)
 			},
 			sensor: {
 				provider: 'airly',
