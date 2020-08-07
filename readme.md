@@ -20,6 +20,7 @@
 - Features strong focus on accessibility 👍
 - Fully customizable 🛠️
 - Pleasing, fully responsive design 💅
+- Utilizes end-to-end encryption 🔒
 - Written in TypeScript
 
 *We aim to add more data sources in the future.
@@ -78,9 +79,10 @@ $ npm test
 	- [ ] Manage locally created reports (blocked by state persistance)
 	- [x] Privacy policy
 - [ ] i18n (long-standing task)
-- [ ] Persist global state (possibly blocked by Recoil API changes)
+- [x] Persist global state (possibly blocked by Recoil API changes)
 - [ ] Secure API routes (only the ones that need to be secured)
 - [ ] Improve language-based redirection
+- [x] End-to-end encryption
 
 ## Technology stack
 
