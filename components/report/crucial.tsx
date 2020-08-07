@@ -143,7 +143,7 @@ const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id
 				<h1>{t('report:information')}</h1>
 				<InfoBox>
 					<p>{t('report:provider')} <ExtLink href={sensor.provider === 'airly' ? 'https://map.airly.eu' : 'https://aqicn.org/'}><b>{sensor.provider === 'airly' ? 'Airly' : 'World Air Quality Index'}</b></ExtLink></p>
-					<p>{t('report:from')} <b>{current.time === 'Invalid date' ? 'N/A' : current.time}</b></p>
+					<p>{t('report:from')} <b>{current.time}</b></p>
 					<p>{t('report:distance')} <b>{sensor.distance === 'N/A' ? 'N/A' : convert(sensor.distance as number, unit)}</b></p>
 				</InfoBox>
 			</Box>
