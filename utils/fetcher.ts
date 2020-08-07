@@ -133,6 +133,8 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 			NO: 'NO'
 		};
 
+		console.log(data);
+
 		return {
 			coords: {
 				latitude: lat,

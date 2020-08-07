@@ -83,6 +83,7 @@ const About = (): JSX.Element => {
 		await submit(data, isLoading, router, {
 			createError: t('home:create-error'),
 			locationError: t('home:location-error'),
+			fetchError: t('home:fetch-error'),
 			reports,
 			onSuccess: setReports
 		});
