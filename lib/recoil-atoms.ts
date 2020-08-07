@@ -10,7 +10,7 @@ export const _language = atom<'en' | 'pl'>({
 	default: 'en'
 });
 
-export const _reports = atom<string[]>({
+export const _reports = atom<Array<{id: string; key?: string}>>({
 	key: 'reports',
 	default: []
 });

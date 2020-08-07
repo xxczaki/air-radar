@@ -6,11 +6,12 @@ import {fetcher} from './fetcher';
 interface Options {
 	createError: string;
 	locationError: string;
-	reports: string[];
-	onSuccess: (arr: string[]) => void;
+	fetchError: string;
+	reports: Array<{id: string; key?: string}>;
+	onSuccess: (arr: Array<{id: string; key?: string}>) => void;
 }
 
-export const submit = async (data: {location?: string}, loadingFn: (isLoading: boolean) => void, router: typeof Router, {createError, locationError, reports, onSuccess}: Options) => {
+export const submit = async (data: {location?: string}, loadingFn: (isLoading: boolean) => void, router: typeof Router, {createError, locationError, fetchError, reports, onSuccess}: Options) => {
 	loadingFn(true);
 
 	const key = await window.crypto.subtle.generateKey(
@@ -37,46 +38,58 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 		if (json.length === 0) {
 			const {showError} = await import('./show-error');
 
-			await showError('location', () => loadingFn(false), {createError, locationError});
+			await showError('location', () => loadingFn(false), {createError, locationError, fetchError});
 		} else {
-			const data = await fetcher(json[0].lat, json[0].lon);
+			try {
+				const data = await fetcher(json[0].lat, json[0].lon);
 
-			const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
-				method: 'POST',
-				body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data}))
-			});
-			const report = await response.json();
+				const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
+					method: 'POST',
+					body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data}))
+				});
+				const report = await response.json();
 
-			if (report?.message === 'OK') {
-				onSuccess([...reports, report.id]);
+				if (report?.message === 'OK') {
+					onSuccess([...reports, {id: report.id, key: objectKey}]);
 
-				await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
-			} else {
+					await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
+				} else {
+					const {showError} = await import('./show-error');
+
+					await showError('create', () => loadingFn(false), {createError, locationError, fetchError});
+				}
+			} catch {
 				const {showError} = await import('./show-error');
 
-				await showError('create', () => loadingFn(false), {createError, locationError});
+				await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError});
 			}
 		}
 	} else {
 		const {getPosition} = await import('./get-position');
 		const {coords} = await getPosition();
 
-		const data = await fetcher(coords.latitude as unknown as string, coords.longitude as unknown as string);
+		try {
+			const data = await fetcher(coords.latitude as unknown as string, coords.longitude as unknown as string);
 
-		const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
-			method: 'POST',
-			body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), ...coords, ...data}))
-		});
-		const report = await response.json();
+			const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
+				method: 'POST',
+				body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), ...coords, ...data}))
+			});
+			const report = await response.json();
 
-		if (report?.message === 'OK') {
-			onSuccess([...reports, report.id]);
+			if (report?.message === 'OK') {
+				onSuccess([...reports, {id: report.id, key: objectKey}]);
 
-			await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
-		} else {
+				await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
+			} else {
+				const {showError} = await import('./show-error');
+
+				await showError('create', () => loadingFn(false), {createError, locationError, fetchError});
+			}
+		} catch {
 			const {showError} = await import('./show-error');
 
-			await showError('create', () => loadingFn(false), {createError, locationError});
+			await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError});
 		}
 	}
 };
