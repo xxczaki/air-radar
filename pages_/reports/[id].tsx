@@ -117,7 +117,13 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 	}, [data?.report]);
 
 	if (router.isFallback || report === 'Decrypting...') {
-		return <WrappedSpinner/>;
+		return (
+			<Container>
+				<Main>
+					<WrappedSpinner/>
+				</Main>
+			</Container>
+		);
 	}
 
 	if (report === 'Fail') {
