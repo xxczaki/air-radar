@@ -4,6 +4,7 @@
 	"location-label": "Location you want to check the air quality for",
 	"check-button": "Check",
 	"encryption": "End-to-end encrypted",
+	"fetch-error": "Could not fetch data",
 	"create-error": "Could not create a report",
 	"illustration-label": "Illustration",
 	"how-it-works": "How it works?",

@@ -4,6 +4,8 @@
 	"location-label": "Lokalizacja, dla której chcesz sprawdzić jakość powietrza",
 	"check-button": "Sprawdź",
 	"encryption": "Szyfrowane end-to-end",
+	"fetch-error": "Nie udało się pobrać danych",
+	"create-error": "Nie udało się utworzyć raportu",
 	"illustration-label": "Ilustracja",
 	"how-it-works": "Jak to działa?",
 	"how-it-works-description1": "Kliknij przycisk powyżej, aby wygenerować raport na temat jakości powietrza w twojej okolicy. Możesz również ręcznie wprowadzić lokalizację. Gdy raport jest już dostępny, możesz z łatwością udostępnić go znajomym.",
