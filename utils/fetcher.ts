@@ -105,6 +105,8 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 				distance: location.distanceTo(_sensor)
 			};
 
+			console.log(data.data.time);
+
 			return {
 				coords: {
 					latitude: lat,
