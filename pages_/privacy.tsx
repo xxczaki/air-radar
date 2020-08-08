@@ -13,7 +13,7 @@ const Index: NextPage<unknown> = () => {
 		<Container>
 			<Main>
 				<h1>{t('privacy:title')}</h1>
-				<i>{t('privacy:last-updated')} 06/08/2020</i>
+				<i>{t('privacy:last-updated')} 08/08/2020</i>
 				<h3>{t('privacy:introduction')}</h3>
 				<p>{t('privacy:introduction-1')}</p>
 				<p>{t('privacy:introduction-2')}</p>
@@ -36,7 +36,8 @@ const Index: NextPage<unknown> = () => {
 				<p>{t('privacy:collected-data-4')} <ExtLink href="https://wiki.osmfoundation.org/wiki/Privacy_Policy">{t('privacy:collected-data-5')}</ExtLink>.</p>
 				<b>{t('privacy:collected-data-6')}</b>
 				<p>{t('privacy:collected-data-7')}</p>
-				<p>{t('privacy:collected-data-8')}</p>
+				<b>{t('privacy:collected-data-8')}</b>
+				<p>{t('privacy:collected-data-9')}</p>
 				<h3>{t('privacy:data-removal')}</h3>
 				<p>{t('privacy:data-removal-1')} <i>a@kepinski.me</i> {t('privacy:data-removal-2')}</p>
 				<p>{t('privacy:data-removal-3')}</p>
