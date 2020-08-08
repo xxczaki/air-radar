@@ -70,7 +70,7 @@ const Container = ({children, reports}: Props): JSX.Element => {
 			{children}
 			<Footer>
 				<p>Antoni Kepinski &copy; {new Date().getFullYear()}</p>
-				{reports && <p>Reports created: <b>{reports}</b></p>}
+				{(reports || reports === 0) && <p>{t('common:created')} <b>{reports}</b></p>}
 			</Footer>
 		</>
 	);
