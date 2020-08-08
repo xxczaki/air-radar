@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NextPage} from 'next';
 import dynamic from 'next/dynamic';
 import Link from 'next-translate/Link';
@@ -43,18 +43,48 @@ const Button = dynamic(async () => {
 
 	return Button;
 });
+const Spinner = dynamic(async () => import('../../components/form/spinner'));
 
 const Index: NextPage<unknown> = () => {
-	const {lang} = useTranslation();
+	const [loading, isLoading] = useState<{is: boolean; id?: string}>({is: false});
+	const {t, lang} = useTranslation();
 	const [reports, setReports] = useRecoilState(_reports);
+
+	const deleteReport = async (id: string) => {
+		isLoading({is: true, id});
+
+		const response = await fetch('/api/delete', {
+			method: 'POST',
+			body: id
+		});
+		const data = await response.json();
+
+		if (data.message === 'OK') {
+			setReports(reports.filter(report => report.id !== id));
+			isLoading({is: false});
+		} else {
+			const {toast} = await import('react-toastify');
+
+			toast.error(t('reports:delete-error'), {
+				position: 'bottom-right',
+				autoClose: 2500,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				progress: undefined
+			});
+
+			isLoading({is: false});
+		}
+	};
 
 	return (
 		<Container>
 			<Main>
-				<h1>History</h1>
-				<p>Previously generated reports will appear below on this page.</p>
+				<h1>{t('reports:title')}</h1>
+				<p>{t('reports:description')}</p>
 				<Divider/>
-				{reports.length === 0 ? <Info>No reports found.</Info> : (
+				{reports.length === 0 ? <Info>{t('reports:info')}</Info> : (
 					<Wrapper>
 						{reports.map((element, index) => (
 							<Box key={element.id}>
@@ -63,14 +93,18 @@ const Index: NextPage<unknown> = () => {
 									<Link href={`/reports/${element.id}#key=${element.key}`} lang={lang}>
 										<a>
 											<Button view>
-												<Icon src={viewIcon} loading="lazy" decoding="async" alt="Icon"/>
-												View
+												<Icon src={viewIcon} loading="lazy" decoding="async" alt={t('reports:icon')}/>
+												{t('reports:view')}
 											</Button>
 										</a>
 									</Link>
-									<Button onClick={() => setReports(reports.filter(report => report.id !== element.id))}>
-										<Icon src={deleteIcon} loading="lazy" decoding="async" alt="Icon"/>
-										Delete
+									<Button onClick={async () => deleteReport(element.id)}>
+										{(loading.is && loading?.id === element.id) ? <Spinner/> : (
+											<>
+												<Icon src={deleteIcon} loading="lazy" decoding="async" alt={t('reports:icon')}/>
+												{t('reports:delete')}
+											</>
+										)}
 									</Button>
 								</ButtonBox>
 							</Box>
