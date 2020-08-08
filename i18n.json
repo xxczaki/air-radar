@@ -29,6 +29,9 @@
 		"/security": [
 			"security"
 		],
+		"/reports": [
+			"reports"
+		],
 		"/reports/[id]": [
 			"report"
 		]

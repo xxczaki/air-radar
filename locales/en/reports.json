@@ -1,0 +1,9 @@
+{
+	"title": "History",
+	"description": "Previously generated reports will appear below on this page.",
+	"info": "No reports found.",
+	"view": "View",
+	"delete": "Delete",
+	"delete-error": "Could not delete the report",
+	"icon": "Icon"
+}

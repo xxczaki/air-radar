@@ -32,6 +32,14 @@
 			"description": "Carbon Monoxide is found in fumes produced any time you burn fuel in cars or trucks, small engines, stoves, lanterns, grills, fireplaces, gas ranges, or furnaces. CO Symptoms are often described as “flu-like”."
 		}
 	},
+	"airly-levels": {
+		"very-low": "Very Low",
+		"low": "Low",
+		"medium": "Medium",
+		"high": "High",
+		"very-high": "Very High",
+		"extreme": "Extreme"
+	},
 	"norm": "WHO Norm",
 	"unit": "Unit:",
 	"information": "Sensor information",

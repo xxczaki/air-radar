@@ -32,6 +32,14 @@
 			"description": "Tlenek węgla występuje w oparach, które powstają przy spalaniu paliwa w samochodach osobowych lub ciężarówkach, małych silnikach, kuchenkach gazowych, piecach czy kominkach. Symptomy są często określane jako “grypopodobne”."
 		}
 	},
+	"airly-levels": {
+		"very-low": "Bardzo Niskie",
+		"low": "Niskie",
+		"medium": "Średnie",
+		"high": "Wysokie",
+		"very-high": "Bardzo Wysokie",
+		"extreme": "Ekstremalne"
+	},
 	"norm": "Norma WHO",
 	"unit": "Jednostka:",
 	"information": "Dane sensora",
