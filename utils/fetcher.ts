@@ -86,7 +86,6 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 				value: data.data.aqi,
 				level: aqiDescription.level,
 				description: aqiDescription.description,
-				advice: aqiDescription.advice,
 				color: aqiDescription.color
 			}];
 
