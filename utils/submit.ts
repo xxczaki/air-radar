@@ -61,7 +61,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 			} catch (error) {
 				const {showError} = await import('./show-error');
 
-				await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError: error});
+				await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError: error.message});
 			}
 		}
 	} else {
@@ -89,7 +89,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 		} catch (error) {
 			const {showError} = await import('./show-error');
 
-			await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError: error});
+			await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError: error.message});
 		}
 	}
 };
