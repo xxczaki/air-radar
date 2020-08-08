@@ -58,10 +58,10 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 
 					await showError('create', () => loadingFn(false), {createError, locationError, fetchError});
 				}
-			} catch {
+			} catch (error) {
 				const {showError} = await import('./show-error');
 
-				await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError});
+				await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError: error});
 			}
 		}
 	} else {
@@ -86,10 +86,10 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 
 				await showError('create', () => loadingFn(false), {createError, locationError, fetchError});
 			}
-		} catch {
+		} catch (error) {
 			const {showError} = await import('./show-error');
 
-			await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError});
+			await showError('fetch', () => loadingFn(false), {createError, locationError, fetchError: error});
 		}
 	}
 };
