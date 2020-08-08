@@ -82,7 +82,16 @@ const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id
 	return (
 		<Wrapper>
 			<Box background={current.indexes[0].color}>
-				<h1>{sensor.provider === 'airly' ? humanizeLevel(current.indexes[0].level as string) : current.indexes[0].level}</h1>
+				<h1>{sensor.provider === 'airly' ?
+					humanizeLevel(current.indexes[0].level as string, {
+						veryLow: t('report:airly-levels.very-low'),
+						low: t('report:airly-levels.low'),
+						medium: t('report:airly-levels.medium'),
+						high: t('report:airly-levels.high'),
+						veryHigh: t('report:airly-levels.very-high'),
+						extreme: t('report:airly-levels.extreme')
+					}) : current.indexes[0].level}
+				</h1>
 				<InfoBox>
 					<p>{current.indexes[0].description}</p>
 					<ValuesBox>
