@@ -12,7 +12,6 @@ import {_reports} from '../../lib/recoil-atoms';
 
 import viewIcon from '../../public/images/open-outline.svg';
 import deleteIcon from '../../public/images/trash-outline.svg';
-import lockIcon from '../../public/images/lock-closed.svg';
 
 const Info = dynamic(async () => {
 	const {Info} = await import('../../components/reports');
