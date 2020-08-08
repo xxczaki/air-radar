@@ -7,6 +7,7 @@ const Box = styled.div`
 	background-color: var(--gray);
 	border-radius: var(--radius);
 	padding: .5rem;
+	max-width: 20rem;
 
 	b {
 		margin-left: .5rem;
