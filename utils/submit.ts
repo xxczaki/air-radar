@@ -43,7 +43,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 			try {
 				const data = await fetcher(json[0].lat, json[0].lon);
 
-				const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
+				const response = await fetch('/api/create', {
 					method: 'POST',
 					body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), coords: {latitude: json[0].lat, longitude: json[0].lon}, ...data}))
 				});
@@ -71,7 +71,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 		try {
 			const data = await fetcher(coords.latitude as unknown as string, coords.longitude as unknown as string);
 
-			const response = await fetch(`${process.env.NODE_ENV === 'production' ? 'https://air-radar.vercel.app' : 'http://localhost:3000'}/api/create`, {
+			const response = await fetch('/api/create', {
 				method: 'POST',
 				body: encode(await encrypt({date: new Date().toLocaleString('en', {hour12: false}), ...coords, ...data}))
 			});
