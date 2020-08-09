@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
 			<html lang="en">
 				<Head>
 					<meta charSet="utf-8"/>
-					<meta name="description" content="Check air quality in your area in just one click. Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
+					<meta name="description" content="Generate air quality reports from anywhere in the world and share them with your friends! Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
 					<meta name="theme-color" content="#131415"/>
 					<meta name="msapplication-TileColor" content="#131415"/>
 					<meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -41,14 +41,14 @@ export default class MyDocument extends Document {
 					<meta name="twitter:card" content="summary_large_image"/>
 					<meta name="twitter:site" content="@dokwadratu"/>
 					<meta name="twitter:title" content="Air Radar ☁️"/>
-					<meta name="twitter:description" content="Check air quality in your area in just one click. Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
-					<meta name="twitter:image" content="https://og.kepinski.me/Antoni%20Kepinski.png?theme=dark&md=0&fontSize=125px&images=https%3A%2F%2Fkepinski.me%2Fimages%2Fflash-outline.svg"/>
+					<meta name="twitter:description" content="Generate air quality reports from anywhere in the world and share them with your friends! Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
+					<meta name="twitter:image" content="https://og.kepinski.me/Air%20Radar.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fair-radar.vercel.app%2Fimages%2Fcloud-outline.svg"/>
 					<meta property="og:title" content="Air Radar ☁️"/>
 					<meta property="og:site_name" content="Air Radar ☁️"/>
-					<meta property="og:url" content="https://air-radar.now.sh"/>
-					<meta property="og:description" content="Check air quality in your area in just one click. Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
+					<meta property="og:url" content="https://air-radar.vercel.app"/>
+					<meta property="og:description" content="Generate air quality reports from anywhere in the world and share them with your friends! Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
 					<meta property="og:type" content="website"/>
-					<meta property="og:image" content="https://og.kepinski.me/Antoni%20Kepinski.png?theme=dark&md=0&fontSize=125px&images=https%3A%2F%2Fkepinski.me%2Fimages%2Fflash-outline.svg"/>
+					<meta property="og:image" content="https://og.kepinski.me/Air%20Radar.png?theme=dark&md=1&fontSize=100px&images=https%3A%2F%2Fair-radar.vercel.app%2Fimages%2Fcloud-outline.svg"/>
 					<link rel="manifest" href="/manifest.json"/>
 					<link rel="icon" href="/favicon.png"/>
 					<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180.png"/>
