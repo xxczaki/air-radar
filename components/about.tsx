@@ -97,7 +97,7 @@ const About = (): JSX.Element => {
 					<Form onSubmit={handleSubmit(onSubmit)}>
 						<Label>{t('home:location')}</Label>
 						<Input ref={register()} type="text" name="location" aria-label={t('home:location-label')} aria-required="false" placeholder="Times Square, New York"/>
-						<Button type="submit">{loading ? <Spinner/> : t('home:check-button')}</Button>
+						<Button type="submit" disabled={loading}>{loading ? <Spinner/> : t('home:check-button')}</Button>
 						<Link href="/security" lang={lang}>
 							<InfoBox>
 								<SimpleImg
