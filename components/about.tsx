@@ -39,9 +39,9 @@ const Container = styled.div`
 const Box = styled.div`
 	display: flex;
 	flex-direction: column;
-	padding-right: 1.25em;
 	width: 100%;
 	max-width: 30rem;
+	justify-content: center;
 `;
 
 const Image = styled(SimpleImg)`
