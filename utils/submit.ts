@@ -52,6 +52,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 				if (report?.message === 'OK') {
 					onSuccess([...reports, {id: report.id, key: objectKey}]);
 
+					navigator.vibrate(200);
 					await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
 				} else {
 					const {showError} = await import('./show-error');
@@ -80,6 +81,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 			if (report?.message === 'OK') {
 				onSuccess([...reports, {id: report.id, key: objectKey}]);
 
+				navigator.vibrate(200);
 				await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
 			} else {
 				const {showError} = await import('./show-error');
