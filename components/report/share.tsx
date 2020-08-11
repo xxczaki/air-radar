@@ -34,7 +34,7 @@ const Box = styled.div`
 	background-color: var(--gray);
 	color: var(--text);
 	padding: 1em;
-	max-width: 20rem;
+	max-width: 21rem;
 
 	h1 {
 		margin: 0;
