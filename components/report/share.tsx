@@ -29,6 +29,19 @@ const Wrapper = styled.section`
 
 const Box = styled.div`
 	display: flex;
+	flex-direction: column;
+	border-radius: var(--radius);
+	background-color: var(--gray);
+	color: var(--text);
+	padding: 1em;
+	max-width: 20rem;
+
+	h1 {
+		margin: 0;
+	}
+`;
+
+const InfoBox = styled.div`
 	justify-content: space-between;
 `;
 
@@ -38,9 +51,9 @@ const Icon = styled.img`
 `;
 
 const Button = styled(_Button)<{long?: boolean}>`
-	background: var(--gray);
-	width: ${props => props.long ? '8.5rem' : '6.8rem'};
-	margin-top: 0.8rem;
+	background: var(--light-gray) !important;
+	width: 100%;
+	margin: 0;
 `;
 
 const Share = ({id, date}: Props): JSX.Element => {
@@ -74,21 +87,24 @@ const Share = ({id, date}: Props): JSX.Element => {
 	return (
 		<Wrapper>
 			<Box>
-				<p>{date}</p>
-				{isSupported ? (
-					<Button
-						long={lang === 'pl'}
-						onClick={() => share({title: `${t('report:name')} ${id}`})}
-					>
-						<Icon src={shareIcon} loading="lazy" decoding="async" alt="Icon"/>
-						{t('report:share')}
-					</Button>
-				) : (
-					<Button onClick={copy}>
-						<Icon src={copyIcon} loading="lazy" decoding="async" alt="Icon"/>
-						{t('report:copy')}
-					</Button>
-				)}
+				<h1>{t('report:details')}</h1>
+				<InfoBox>
+					<p>{t('report:generated')} <b>{date}</b></p>
+					{isSupported ? (
+						<Button
+							long={lang === 'pl'}
+							onClick={() => share({title: `${t('report:name')} ${id}`})}
+						>
+							<Icon src={shareIcon} loading="lazy" decoding="async" alt="Icon"/>
+							{t('report:share')}
+						</Button>
+					) : (
+						<Button onClick={copy}>
+							<Icon src={copyIcon} loading="lazy" decoding="async" alt="Icon"/>
+							{t('report:copy')}
+						</Button>
+					)}
+				</InfoBox>
 			</Box>
 		</Wrapper>
 	);
