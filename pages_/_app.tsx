@@ -11,7 +11,7 @@ import debounce from 'lodash.debounce';
 import nprogress from 'nprogress';
 
 // TODO: Add `import Container from '../components/container';`. See: https://github.com/vinissimus/next-translate/issues/214#issuecomment-652416113
-import {_unit, _language, _reports} from '../lib/recoil-atoms';
+import {_unit, _language, _index, _reports} from '../lib/recoil-atoms';
 
 // Assets
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -20,6 +20,7 @@ import 'react-tippy/dist/tippy.css';
 interface State {
 	unit: 'km' | 'm' | 'mi';
 	language: 'pl' | 'en';
+	index: 'aqi-us' | 'aqhi' | 'daqi' | 'eaqi' | 'caqi';
 	reports: string[];
 }
 
@@ -35,7 +36,7 @@ const GlobalStyle = createGlobalStyle`
 		--background: #131415;
 		--text: #fff;
 		--gray: #222;
-		--light-gray: #666;
+		--light-gray: #424242;
 		--header: #131415cc;
 		--hover: #2b2d30;
 		--selection: hsl(0deg 0% 100% / 99%);
@@ -103,13 +104,13 @@ const GlobalStyle = createGlobalStyle`
 	}
 
 	.tippy-tooltip {
-		background-color: #424242;
+		background-color: var(--light-gray);
 		border-radius: var(--inline-radius);
 		color: var(--text);
 	}
 
 	.tippy-popper[x-placement^=top] [x-arrow] {
-		border-top: 7px solid #424242;
+		border-top: 7px solid var(--light-gray);
 	}
 
 	::selection {
@@ -158,6 +159,7 @@ const CustomApp: NextPage<AppProps> = ({Component, pageProps}: AppProps) => {
 						if (state && typeof state !== 'string') {
 							set(_unit, state.unit);
 							set(_language, state.language);
+							set(_index, state.index);
 							set(_reports, state.reports);
 						}
 					}}

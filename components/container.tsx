@@ -8,7 +8,7 @@ import Logo from './logo';
 import Nav from './nav';
 import NavLink from './navlink';
 import Footer from './footer';
-import {_unit, _language, _reports} from '../lib/recoil-atoms';
+import {_unit, _language, _index, _reports} from '../lib/recoil-atoms';
 
 import cloudOutline from '../public/images/cloud-outline.svg';
 
@@ -49,9 +49,10 @@ const Container = ({children, reports}: Props): JSX.Element => {
 	useRecoilTransactionObserver_UNSTABLE(({snapshot}) => {
 		const unit = snapshot.getLoadable(_unit).contents;
 		const language = snapshot.getLoadable(_language).contents;
+		const index = snapshot.getLoadable(_index).contents;
 		const reports = snapshot.getLoadable(_reports).contents;
 
-		localStorage.setItem('state', JSON.stringify({unit, language, reports}));
+		localStorage.setItem('state', JSON.stringify({unit, language, index, reports}));
 	});
 
 	return (
