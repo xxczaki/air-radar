@@ -7,7 +7,7 @@ import {useRecoilState} from 'recoil';
 
 import Container from '../components/container';
 import Main from '../components/main';
-import {_unit, _language} from '../lib/recoil-atoms';
+import {_unit, _language, _index} from '../lib/recoil-atoms';
 
 interface Props {
 	active: boolean;
@@ -36,10 +36,16 @@ const Preference = styled.a<Props>`
 	outline: none;
 `;
 
+const Select = styled.select`
+    font-family: var(--font-sans);
+	height: 2rem;
+`;
+
 const Index: NextPage<unknown> = () => {
 	const {t} = useTranslation();
 	const [unit, setUnit] = useRecoilState(_unit);
 	const [language, setLanguage] = useRecoilState(_language);
+	const [index, setIndex] = useRecoilState(_index);
 
 	return (
 		<Container>
@@ -54,6 +60,14 @@ const Index: NextPage<unknown> = () => {
 						<Preference active={language === 'pl'} onClick={() => setLanguage('pl')}>🇵🇱</Preference>
 					</Link>
 				</Wrapper>
+				<p>{t('preferences:index')}</p>
+				<Select name="index" value={index} onChange={element => setIndex(element.target.value as 'aqi-us' | 'aqhi' | 'daqi' | 'eaqi' | 'caqi')}>
+					<option value="aqi-us">AQI (US)</option>
+					<option value="aqhi">AQHI (Canada)</option>
+					<option value="daqi">DAQI (UK)</option>
+					<option value="eaqi">EAQI (EU)</option>
+					<option value="caqi">CAQI (EU, deprecated)</option>
+				</Select>
 				<p>{t('preferences:unit.title')}</p>
 				<Wrapper>
 					<Preference active={unit === 'km'} onClick={() => setUnit('km')}>{t('preferences:unit.km')}</Preference>

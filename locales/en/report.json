@@ -46,6 +46,8 @@
 	"provider": "Provider:",
 	"from": "Measurement time:",
 	"distance": "Distance:",
+	"details": "Report details",
+	"generated": "Generated:",
 	"share": "Share",
 	"copy": "Copy",
 	"copy-success": "Copied!",

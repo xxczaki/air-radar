@@ -46,6 +46,8 @@
 	"provider": "Dostawca:",
 	"from": "Czas pomiaru:",
 	"distance": "Dystans:",
+	"details": "O raporcie",
+	"generated": "Wygenerowano:",
 	"share": "Udostępnij",
 	"copy": "Skopiuj",
 	"copy-success": "Skopiowano!",

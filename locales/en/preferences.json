@@ -1,6 +1,7 @@
 {
 	"header": "Preferences",
 	"language": "Language:",
+	"index": "Air quality index",
 	"unit": {
 		"title": "Unit:",
 		"km": "kilometers",
