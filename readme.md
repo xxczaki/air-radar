@@ -76,11 +76,11 @@ $ npm test
 	- [x] Information about WHO standards
 - [ ] Other pages
 	- [ ] Allow adding custom-made air pollution sensors
-	- [ ] Manage locally created reports (blocked by state persistance)
+	- [x] Manage locally created reports
 	- [x] Privacy policy
 - [ ] i18n (long-standing task)
 - [x] Persist global state (possibly blocked by Recoil API changes)
-- [ ] Secure API routes (only the ones that need to be secured)
+- [x] Secure API routes
 - [ ] Improve language-based redirection
 - [x] End-to-end encryption
 
