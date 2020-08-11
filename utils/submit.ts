@@ -52,7 +52,11 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 				if (report?.message === 'OK') {
 					onSuccess([...reports, {id: report.id, key: objectKey}]);
 
-					window.navigator.vibrate(200);
+					// eslint-disable-next-line max-depth
+					if ('vibrate' in navigator) {
+						navigator.vibrate(200);
+					}
+
 					await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
 				} else {
 					const {showError} = await import('./show-error');
@@ -81,7 +85,10 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 			if (report?.message === 'OK') {
 				onSuccess([...reports, {id: report.id, key: objectKey}]);
 
-				window.navigator.vibrate(200);
+				if ('vibrate' in navigator) {
+					navigator.vibrate(200);
+				}
+
 				await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
 			} else {
 				const {showError} = await import('./show-error');
