@@ -54,7 +54,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 
 					// eslint-disable-next-line max-depth
 					if ('vibrate' in navigator) {
-						navigator.vibrate(200);
+						navigator.vibrate(500);
 					}
 
 					await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
@@ -86,7 +86,7 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 				onSuccess([...reports, {id: report.id, key: objectKey}]);
 
 				if ('vibrate' in navigator) {
-					navigator.vibrate(200);
+					navigator.vibrate(500);
 				}
 
 				await router.replaceI18n(`/reports/${report.id}#key=${objectKey}`);
