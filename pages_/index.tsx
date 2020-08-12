@@ -1,9 +1,9 @@
 import React from 'react';
 import {NextPage, GetStaticProps} from 'next';
 
-import Container from '../components/container';
-import Main from '../components/main';
-import About from '../components/about';
+import Container from '../components/shared/container';
+import Main from '../components/shared/main';
+import About from '../components/home';
 
 interface Props {
 	reports: number;

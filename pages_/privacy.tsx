@@ -2,8 +2,8 @@ import React from 'react';
 import {NextPage} from 'next';
 import useTranslation from 'next-translate/useTranslation';
 
-import Container from '../components/container';
-import Main from '../components/main';
+import Container from '../components/shared/container';
+import Main from '../components/shared/main';
 import ExtLink from '../components/extlink';
 
 const Index: NextPage<unknown> = () => {

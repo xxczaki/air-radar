@@ -5,8 +5,8 @@ import {SimpleImg} from 'react-simple-img';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next-translate/Link';
 
-import Container from '../components/container';
-import Main from '../components/main';
+import Container from '../components/shared/container';
+import Main from '../components/shared/main';
 
 import preferences from '../public/images/settings-outline.svg';
 import history from '../public/images/refresh-outline.svg';

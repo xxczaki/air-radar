@@ -1,84 +1,50 @@
-import React, {useState} from 'react';
+import React, {useState, FC} from 'react';
 import dynamic from 'next/dynamic';
-import styled from 'styled-components';
-import {SimpleImg} from 'react-simple-img';
+import Skeleton from 'react-loading-skeleton';
 import {useForm} from 'react-hook-form';
-import router from 'next-translate/Router';
-import Link from 'next-translate/Link';
 import useTranslation from 'next-translate/useTranslation';
 import {useRecoilState} from 'recoil';
+import router from 'next-translate/Router';
+import Link from 'next-translate/Link';
 
-import Header from './header';
+import Header from '../header';
 import {
 	Button,
 	Form,
 	Input,
 	Label
-} from './form';
-import Divider from './divider';
-import Details from './details';
-import ExtLink from './extlink';
-import {_reports} from '../lib/recoil-atoms';
+} from '../form';
+import Divider from '../divider';
+import Container from './container';
+import Box from './box';
+import InfoBox from './info-box';
+import {_reports} from '../../lib/recoil-atoms';
 
-import illustration from '../public/images/undraw-illustration.svg';
-import shield from '../public/images/shield-checkmark.svg';
+import illustration from '../../public/images/undraw-illustration.svg';
+import shield from '../../public/images/shield-checkmark.svg';
 
-const Spinner = dynamic(async () => import('./form/spinner'));
+const HeroImage = dynamic(async () => import('./hero-image'), {loading: () => <Skeleton/>});
+const SimpleImg = dynamic(async () => {
+	const {SimpleImg} = await import('react-simple-img');
+
+	return SimpleImg;
+});
+const Spinner = dynamic(async () => import('../form/spinner'));
+const Details = dynamic(async () => import('../details'), {loading: () => <Skeleton/>});
+const ExtLink = dynamic(async () => import('../extlink'));
 
 type FormData = {
 	location?: string;
 };
 
-const Container = styled.div`
-	display: flex;
-	flex-wrap: wrap-reverse;
-	justify-content: space-between;
-	width: 100%;
-`;
-
-const Box = styled.div`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	max-width: 30rem;
-	justify-content: center;
-`;
-
-const Image = styled(SimpleImg)`
-	user-select: none;
-
-	@media (min-width: 150px) and (max-width: 891px) {
-		display: none !important;
-	}
-`;
-
-const InfoBox = styled.a`
-	display: flex;
-	width: 100%;
-	align-items: center;
-	justify-content: center;
-	margin-top: var(--gap);
-	cursor: pointer;
-	transition: opacity var(--transition);
-
-	b {
-		font-size: 1rem;
-		margin-left: .5rem;
-	}
-
-	&:hover {
-		opacity: 0.8;
-	}
-`;
-
-const About = (): JSX.Element => {
+const Index: FC = () => {
 	const [loading, isLoading] = useState(false);
 	const {register, handleSubmit} = useForm<FormData>();
 	const [reports, setReports] = useRecoilState(_reports);
 	const {t, lang} = useTranslation();
 
 	const onSubmit = async (data: FormData) => {
-		const {submit} = await import('../utils/submit');
+		const {submit} = await import('../../utils/submit');
 
 		await submit(data, isLoading, router, {
 			createError: t('home:create-error'),
@@ -113,7 +79,7 @@ const About = (): JSX.Element => {
 						</Link>
 					</Form>
 				</Box>
-				<Image
+				<HeroImage
 					src={illustration}
 					placeholder="var(--background)"
 					// @ts-expect-error
@@ -158,4 +124,4 @@ const About = (): JSX.Element => {
 	);
 };
 
-export default About;
+export default Index;

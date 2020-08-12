@@ -1,8 +1,8 @@
 import React from 'react';
 import {NextPage} from 'next';
 
-import Container from '../components/container';
-import Main from '../components/main';
+import Container from '../components/shared/container';
+import Main from '../components/shared/main';
 
 const Index: NextPage<unknown> = () => (
 	<Container>

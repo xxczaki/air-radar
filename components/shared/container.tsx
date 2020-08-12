@@ -8,9 +8,9 @@ import Logo from './logo';
 import Nav from './nav';
 import NavLink from './navlink';
 import Footer from './footer';
-import {_unit, _language, _index, _reports} from '../lib/recoil-atoms';
+import {_unit, _language, _index, _reports} from '../../lib/recoil-atoms';
 
-import cloudOutline from '../public/images/cloud-outline.svg';
+import cloudOutline from '../../public/images/cloud-outline.svg';
 
 interface Props {
 	children: React.ReactNode;

@@ -5,8 +5,8 @@ import {useRouter} from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import Skeleton from 'react-loading-skeleton';
 
-import Container from '../../components/container';
-import Main from '../../components/main';
+import Container from '../../components/shared/container';
+import Main from '../../components/shared/main';
 import WrappedSpinner from '../../components/report/wrapped-spinner';
 import {Response} from '../../utils/fetcher';
 
