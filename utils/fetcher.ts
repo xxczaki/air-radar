@@ -59,9 +59,9 @@ export const fetcher = async (latitude?: string, longitude?: string): Promise<Ex
 			return null;
 		}
 
-		const data = await airly.pointMeasurements(lat, lng);
+		const data = await airly.nearestMeasurements(lat, lng, 5);
 
-		if (data?.current?.values?.length === 0) {
+		if (data?.errorCode || data?.current?.values?.length === 0) {
 			const response = await fetch(`https://api.waqi.info/feed/geo:${lat};${lng}/?token=${process.env.NEXT_PUBLIC_WAQI_TOKEN}`);
 			const data = await response.json();
 
