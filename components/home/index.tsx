@@ -18,6 +18,7 @@ import Divider from '../divider';
 import Container from './container';
 import Box from './box';
 import InfoBox from './info-box';
+import ExtLink from '../extlink';
 import {_reports} from '../../lib/recoil-atoms';
 
 import illustration from '../../public/images/undraw-illustration.svg';
@@ -31,7 +32,6 @@ const SimpleImg = dynamic(async () => {
 });
 const Spinner = dynamic(async () => import('../form/spinner'));
 const Details = dynamic(async () => import('../details'), {loading: () => <Skeleton/>});
-const ExtLink = dynamic(async () => import('../extlink'));
 
 type FormData = {
 	location?: string;
@@ -108,13 +108,7 @@ const Index: FC = () => {
 			<Details>
 				<summary>{t('home:faq.4.q')}</summary>
 				<p>{t('home:faq.4.a.1')}</p>
-				<p>{t('home:faq.4.a.2')}</p>
-				<ul>
-					<li><ExtLink href="https://airly.eu/docs/pp-en.pdf" target="_blank" rel="noopener noreferrer">Airly</ExtLink></li>
-					<li><ExtLink href="https://aqicn.org/privacy" target="_blank" rel="noopener noreferrer">World Air Quality Index</ExtLink></li>
-					<li><ExtLink href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">Nominatim ({t('home:faq.4.a.3')})</ExtLink></li>
-					<li><ExtLink href="https://www.mapbox.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Mapbox</ExtLink></li>
-				</ul>
+				<p>{t('home:faq.4.a.2')} <Link href="/privacy" lang={lang}><ExtLink href="/privacy">{t('home:faq.4.a.3')}</ExtLink></Link>.</p>
 			</Details>
 			<Details>
 				<summary>{t('home:faq.5.q')}</summary>

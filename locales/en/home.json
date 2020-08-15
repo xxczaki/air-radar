@@ -38,9 +38,9 @@
 		"4": {
 			"q": "Does this tool collect any personal data?",
 			"a": {
-				"1": "No, Air Radar does not collect nor store any private information, such as your IP address. The exception is the location, which you provide when generating the report. However, since we utilize end-to-end encryption, you don't need to worry. Furthermore, our code is also fully open-source.",
-				"2": "However, we use some third-party services, which might do so. You can check their privacy policies below:",
-				"3": "part of OpenStreetMap Foundation"
+				"1": "No, Air Radar does not collect nor store any private information, such as your IP address. The exception is the location, which you provide when generating the report. However, since we utilize end-to-end encryption, you don't need to worry. Furthermore, our code is fully open-source.",
+				"2": "However, we use some third-party services, which might do so. To learn more, check out our",
+				"3": "privacy policy"
 			}
 		},
 		"5": {

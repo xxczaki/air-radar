@@ -38,9 +38,9 @@
 		"4": {
 			"q": "Czy to narzędzia zbiera prywatne dane?",
 			"a": {
-				"1": "Nie, Air Radar nie zbiera ani nie przechowuje żadnych prywatnych informacji, takich jak np. twój adres IP. Wyjątkiem jest lokalizacja, którą podasz przy generowaniu raportu. Stosujemy szyfrowanie end-to-end, więc nie masz się czego obawiać. Ponadto nasz kod jest również w pełni otwartoźródłowy.",
-				"2": "Niemniej jednak korzystamy z usług firm trzecich, które mogą to robić. Możesz zapoznać się z ich politykami prywatności poniżej:",
-				"3": "część OpenStreetMap Foundation"
+				"1": "Nie, Air Radar nie zbiera ani nie przechowuje żadnych prywatnych informacji, takich jak np. twój adres IP. Wyjątkiem jest lokalizacja, którą podasz przy generowaniu raportu. Stosujemy szyfrowanie end-to-end, więc nie masz się czego obawiać. Ponadto nasz kod jest w pełni otwartoźródłowy.",
+				"2": "Niemniej jednak korzystamy z usług firm trzecich, które mogą to robić. Dowiedz się więcej w naszej",
+				"3": "polityce prywatności"
 			}
 		},
 		"5": {
