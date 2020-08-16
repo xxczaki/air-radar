@@ -70,10 +70,10 @@ export const submit = async (data: {location?: string}, loadingFn: (isLoading: b
 			}
 		}
 	} else {
-		const {getPosition} = await import('./get-position');
-		const {coords} = await getPosition();
-
 		try {
+			const {getPosition} = await import('./get-position');
+			const {coords} = await getPosition();
+
 			const data = await fetcher(coords.latitude as unknown as string, coords.longitude as unknown as string);
 
 			const response = await fetch('/api/create', {
