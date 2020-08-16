@@ -33,12 +33,12 @@
 		}
 	},
 	"airly-levels": {
-		"very-low": "Bardzo Niskie",
-		"low": "Niskie",
+		"very-low": "Bardzo Dobre",
+		"low": "Dobre",
 		"medium": "Średnie",
-		"high": "Wysokie",
-		"very-high": "Bardzo Wysokie",
-		"extreme": "Ekstremalne"
+		"high": "Złe",
+		"very-high": "Bardzo Złe",
+		"extreme": "Ekstremalnie Złe"
 	},
 	"norm": "Norma WHO",
 	"unit": "Jednostka:",
