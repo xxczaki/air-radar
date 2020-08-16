@@ -71,7 +71,7 @@ const Index: NextPage<Props> = (props: Readonly<Props>) => {
 
 	useEffect(() => {
 		(async () => {
-			if (data?.report) {
+			if (data?.report && data.report !== '[]') {
 				const objectKey = window.location.hash.slice('#key='.length);
 
 				if (objectKey.length > 0) {
