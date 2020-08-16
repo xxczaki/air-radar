@@ -15,7 +15,7 @@
 	"collected-data-2": "W celu utworzenia raportu na temat czystości powietrza, użytkownik musi dostarczyć lokalizację. Może on to zrobić na 2 sposoby:",
 	"collected-data-list-1": "korzystając z Geolocation API*",
 	"collected-data-list-2": "ręcznie wprowadzając pożądaną lokalizację",
-	"collected-data-3": "* wymaga zezwolenia przeglądarce uprawnienia.",
+	"collected-data-3": "* wymaga zezwolenia dostępu w przeglądarce.",
 	"collected-data-4": "Jeżeli zostanie wybrana druga opcja, wówczas Air Radar skorzysta z serwisu firmy trzeciej (Nominatim), w celu pozystania koordynatów geograficznych z wpisanej lokalizacji. Ich polityka prywatności może zostać znaleziona",
 	"collected-data-5": "tutaj",
 	"collected-data-6": "Air Radar nie używa wyszukiwania lokalizacji na podstawie adresu IP.",
@@ -33,7 +33,7 @@
 	"third-party-4": ", które posiadają własne polityki prywatności.",
 	"third-party-5": "Nie wykorzystujemy żadnych narzędzi służących do analityki, marketingu, czy pokazywania reklam.",
 	"cookies": "Ciasteczka i pamięć przeglądarki",
-	"cookies-1": "Air Radar wykorzystuje tzw. 'ciasteczka' tylko w celu poprawy wydajności, a co za tym idzie ich obsługa nie jest wymagane, mimo wszystko zalecana. Korzystamy również z Web Storage API w celu zapisywania preferencji użytkownika i wygenerowanych raportów (w formie unikatowych identyfikatorów). Wyłączenie, bądź opróżnienie pamięci przeglądarki może wpłynąć na funkcjonalność strony.",
+	"cookies-1": "Air Radar wykorzystuje tzw. 'ciasteczka' tylko w celu poprawy wydajności, a co za tym idzie ich obsługa nie jest wymagana, mimo wszystko zalecana. Korzystamy również z Web Storage API w celu zapisywania preferencji użytkownika i wygenerowanych raportów (w formie unikatowych identyfikatorów). Wyłączenie, bądź opróżnienie pamięci przeglądarki może wpłynąć na funkcjonalność strony.",
 	"other": "Inne obawy",
 	"other-1": "Użytkownicy mogą w każdej chwili skontaktować się z administratorem strony w celu zadania pytań lub wyjaśnienia obaw związanych z ich prywatności, korzystając z adresu e-mail:"
 }
