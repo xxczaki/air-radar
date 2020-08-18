@@ -13,11 +13,7 @@ import {Response} from '../../utils/fetcher';
 import {convert} from '../../utils/convert';
 import {_unit} from '../../lib/recoil-atoms';
 
-const Tooltip = dynamic(async () => {
-	const {Tooltip} = await import('react-tippy');
-
-	return Tooltip;
-});
+const Tippy = dynamic(async () => import('@tippyjs/react'));
 
 interface BoxProps {
 	background?: string;
@@ -75,6 +71,11 @@ const Value = styled.div<BoxProps>`
 	}
 `;
 
+const Tooltip = styled(Tippy)`
+	background-color: var(--light-gray);
+    border-radius: var(--inline-radius);
+`;
+
 const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id' | 'date'>): JSX.Element => {
 	const {t} = useTranslation();
 	const [unit] = useRecoilState(_unit);
@@ -98,10 +99,8 @@ const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id
 						{current.values.map(element => (
 							<Tooltip
 								key={element.name}
-								interactive
-								arrow
-								position="top"
-								html={<Description
+								placement="top"
+								content={<Description
 									name={element.name}
 									value={element.value}
 									details={{

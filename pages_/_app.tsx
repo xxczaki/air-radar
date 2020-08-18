@@ -15,7 +15,7 @@ import {_unit, _language, _index, _reports} from '../lib/recoil-atoms';
 
 // Assets
 import 'react-toastify/dist/ReactToastify.min.css';
-import 'react-tippy/dist/tippy.css';
+import 'tippy.js/dist/tippy.css';
 
 interface State {
 	unit: 'km' | 'm' | 'mi';
