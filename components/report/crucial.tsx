@@ -74,6 +74,11 @@ const Value = styled.div<BoxProps>`
 const Tooltip = styled(Tippy)`
 	background-color: var(--light-gray);
     border-radius: var(--inline-radius);
+	padding: .5rem;
+
+    &[data-placement^='top'] > .tippy-arrow::before {
+        border-top-color: var(--light-gray);
+    }
 `;
 
 const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id' | 'date'>): JSX.Element => {
@@ -99,6 +104,7 @@ const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id
 						{current.values.map(element => (
 							<Tooltip
 								key={element.name}
+								interactive
 								placement="top"
 								content={<Description
 									name={element.name}
@@ -133,8 +139,7 @@ const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id
 										co: {
 											description: t('report:pollutants.co.description')
 										},
-										norm: t('report:norm'),
-										unit: t('report:unit')
+										norm: t('report:norm')
 									}}
 								/>}
 							>
