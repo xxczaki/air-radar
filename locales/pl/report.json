@@ -41,10 +41,9 @@
 		"extreme": "Ekstremalnie Złe"
 	},
 	"norm": "Norma WHO",
-	"unit": "Jednostka:",
 	"information": "Dane sensora",
 	"provider": "Dostawca:",
-	"from": "Czas pomiaru:",
+	"from": "Godzina pomiaru:",
 	"distance": "Dystans:",
 	"details": "O raporcie",
 	"generated": "Wygenerowano:",
