@@ -35,7 +35,6 @@ interface Props {
 			description: string;
 		};
 		norm: string;
-		unit: string;
 	};
 }
 
@@ -110,7 +109,6 @@ const Description = ({name, value, details}: Props): JSX.Element => {
 	return (
 		<Wrapper>
 			<h3>{name}</h3>
-			<p><b>{details.unit} </b>μg/m3</p>
 			<p>{description}</p>
 			{norm && <p><b>{details.norm} ({norm.time}):</b> {norm.norm} <i>({norm.percent}%)</i></p>}
 		</Wrapper>
