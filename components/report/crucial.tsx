@@ -102,52 +102,54 @@ const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id
 					<p>{current.indexes[0].description}</p>
 					<ValuesBox>
 						{current.values.map(element => (
-							<Tooltip
-								key={element.name}
-								interactive
-								placement="top"
-								content={<Description
-									name={element.name}
-									value={element.value}
-									details={{
-										pm1: {
-											description: t('report:pollutants.pm1.description')
-										},
-										pm25: {
-											description: t('report:pollutants.pm25.description'),
-											time: t('report:pollutants.pm25.time')
-										},
-										pm10: {
-											description: t('report:pollutants.pm10.description'),
-											time: t('report:pollutants.pm10.time')
-										},
-										no2: {
-											description: t('report:pollutants.no2.description'),
-											time: t('report:pollutants.no2.time')
-										},
-										so2: {
-											description: t('report:pollutants.so2.description'),
-											time: t('report:pollutants.so2.time')
-										},
-										o3: {
-											description: t('report:pollutants.o3.description'),
-											time: t('report:pollutants.o3.time')
-										},
-										h2s: {
-											description: t('report:pollutants.h2s.description')
-										},
-										co: {
-											description: t('report:pollutants.co.description')
-										},
-										norm: t('report:norm')
-									}}
-								/>}
-							>
-								<Value background={current.indexes[0].color}>
-									<p>{element.name}</p>
-									<h3>{element.value}</h3>
-								</Value>
-							</Tooltip>
+							<div key={element.name}>
+								<Tooltip
+
+									interactive
+									placement="top"
+									content={<Description
+										name={element.name}
+										value={element.value}
+										details={{
+											pm1: {
+												description: t('report:pollutants.pm1.description')
+											},
+											pm25: {
+												description: t('report:pollutants.pm25.description'),
+												time: t('report:pollutants.pm25.time')
+											},
+											pm10: {
+												description: t('report:pollutants.pm10.description'),
+												time: t('report:pollutants.pm10.time')
+											},
+											no2: {
+												description: t('report:pollutants.no2.description'),
+												time: t('report:pollutants.no2.time')
+											},
+											so2: {
+												description: t('report:pollutants.so2.description'),
+												time: t('report:pollutants.so2.time')
+											},
+											o3: {
+												description: t('report:pollutants.o3.description'),
+												time: t('report:pollutants.o3.time')
+											},
+											h2s: {
+												description: t('report:pollutants.h2s.description')
+											},
+											co: {
+												description: t('report:pollutants.co.description')
+											},
+											norm: t('report:norm')
+										}}
+									/>}
+								>
+									<Value background={current.indexes[0].color}>
+										<p>{element.name}</p>
+										<h3>{element.value}</h3>
+									</Value>
+								</Tooltip>
+							</div>
 						))}
 					</ValuesBox>
 				</InfoBox>
@@ -157,7 +159,7 @@ const Crucial = ({current, sensor}: Except<Response, 'coords' | 'forecast' | 'id
 				<InfoBox>
 					<p>{t('report:provider')} <ExtLink href={sensor.provider === 'airly' ? 'https://map.airly.eu' : 'https://aqicn.org/'}><b>{sensor.provider === 'airly' ? 'Airly' : 'World Air Quality Index'}</b></ExtLink></p>
 					<p>{t('report:from')} <b>{current.time}</b></p>
-					<p>{t('report:distance')} <b>{sensor.distance === 'N/A' ? 'N/A' : convert(sensor.distance as number, unit)}</b></p>
+					{sensor.distance !== 'N/A' && <p>{t('report:distance')} <b>{convert(sensor.distance as number, unit)}</b></p>}
 				</InfoBox>
 			</Box>
 		</Wrapper>
