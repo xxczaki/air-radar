@@ -12,7 +12,6 @@ import preferences from '../public/images/settings-outline.svg';
 import history from '../public/images/refresh-outline.svg';
 import add from '../public/images/add-outline.svg';
 import information from '../public/images/information-circle-outline.svg';
-import shield from '../public/images/shield-checkmark.svg';
 
 interface Props {
 	disabled?: boolean;
@@ -102,19 +101,6 @@ const Index: NextPage<unknown> = () => {
 							<h2>{t('more:add-sensor')}</h2>
 						</Box>
 					</Abbreviation>
-					<Link href="/security" lang={lang}>
-						<Box>
-							<Icon
-								src={shield}
-								placeholder="var(--gray)"
-								// @ts-expect-error
-								draggable={false}
-								alt={t('more:alt')}
-								height="3.5rem"
-							/>
-							<h2>{t('more:security')}</h2>
-						</Box>
-					</Link>
 					<Link href="/privacy" lang={lang}>
 						<Box>
 							<Icon
