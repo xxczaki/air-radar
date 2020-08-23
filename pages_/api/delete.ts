@@ -2,7 +2,7 @@ import {NextApiRequest, NextApiResponse} from 'next';
 import corsMiddleware from 'cors';
 
 import {initMiddleware} from '../../lib/init-middleware';
-import client from '../../middlewares/db';
+import database from '../../middlewares/db';
 
 type Data = {
 	message: string;
@@ -18,9 +18,7 @@ const createReport = async (request: NextApiRequest, response: NextApiResponse<D
 	try {
 		await cors(request, response);
 
-		await client.connect();
-
-		const db = client.db(process.env.DB_NAME);
+		const db = await database();
 
 		await db.collection(process.env.DB_COLLECTION ?? '').deleteOne({_id: request.body});
 

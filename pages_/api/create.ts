@@ -3,7 +3,7 @@ import corsMiddleware from 'cors';
 import {nanoid} from 'nanoid';
 
 import {initMiddleware} from '../../lib/init-middleware';
-import client from '../../middlewares/db';
+import database from '../../middlewares/db';
 
 type Data = {
 	message: string;
@@ -20,9 +20,8 @@ const createReport = async (request: NextApiRequest, response: NextApiResponse<D
 	try {
 		await cors(request, response);
 
-		await client.connect();
+		const db = await database();
 
-		const db = client.db(process.env.DB_NAME);
 		const _id = nanoid(10);
 
 		await db.collection(process.env.DB_COLLECTION ?? '').insertOne({_id, report: request.body});
