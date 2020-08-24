@@ -10,9 +10,9 @@ export const formatDate = async (date: string): Promise<string> => {
 
 		return native;
 	} catch {
-		const {parseISO, lightFormat} = await import('date-fns');
+		const {format} = await import('light-date');
 
-		return lightFormat(parseISO(date), 'HH:mm');
+		return format(new Date(date), '{HH}:{mm}');
 	}
 };
 
