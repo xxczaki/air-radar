@@ -3,9 +3,9 @@ export const formatDate = async (date: string): Promise<string> => {
 		const native = new Date(date).toLocaleTimeString('en', {hour: '2-digit', minute: '2-digit', hour12: false});
 
 		if (native === 'Invalid Date') {
-			const {parseISO, lightFormat} = await import('date-fns');
+			const {format} = await import('light-date');
 
-			return lightFormat(parseISO(date), 'HH:mm');
+			return format(new Date(date), '{HH}:{mm}');
 		}
 
 		return native;
