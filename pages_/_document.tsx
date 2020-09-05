@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, {Head, Main, NextScript, DocumentContext} from 'next/document';
+import Document, {Html, Head, Main, NextScript, DocumentContext} from 'next/document';
 import {ServerStyleSheet} from 'styled-components';
 
 export default class MyDocument extends Document {
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
 
 	render(): JSX.Element {
 		return (
-			<html lang="en">
+			<Html lang="en">
 				<Head>
 					<meta charSet="utf-8"/>
 					<meta name="description" content="Generate air quality reports from anywhere in the world and share them with your friends! Air Radar uses 3 trusted sources to provide the latest and most accurate data. It is also fully open-source!"/>
@@ -141,7 +141,7 @@ export default class MyDocument extends Document {
 					<Main/>
 					<NextScript/>
 				</body>
-			</html>
+			</Html>
 		);
 	}
 }
