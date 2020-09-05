@@ -1,7 +1,7 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import styled from 'styled-components';
-import {darken} from 'polished';
+import {darken} from 'color2k';
 import useTranslation from 'next-translate/useTranslation';
 import {useRecoilState} from 'recoil';
 import {Except} from 'type-fest';
@@ -54,7 +54,7 @@ const Value = styled.div<BoxProps>`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
-	background-color: ${props => darken(0.125, props.background as string)};
+	background-color: ${props => darken(props.background as string, 0.125)};
 	border-radius: var(--inline-radius);
 	width: 4rem;
 	height: 4rem;
@@ -67,7 +67,7 @@ const Value = styled.div<BoxProps>`
 	}
 
 	&:hover {
-		background-color: ${props => darken(0.14, props.background as string)};
+		background-color: ${props => darken(props.background as string, 0.14)};
 	}
 `;
 
