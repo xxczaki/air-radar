@@ -1,105 +1,105 @@
 {
-	"name": "air-radar",
-	"version": "1.0.0",
-	"description": "Generate air quality reports from anywhere in the world and share them with your friends!",
-	"private": true,
-	"scripts": {
-		"build": "next-translate && next build",
-		"dev": "next-translate && next dev",
-		"start": "next start",
-		"test": "xo && stylelint './**/*.ts'"
-	},
-	"engines": {
-		"node": "12.x"
-	},
-	"xo": {
-		"envs": [
-			"node",
-			"browser"
-		],
-		"extends": [
-			"xo-typescript",
-			"xo-react"
-		],
-		"rules": {
-			"import/no-unassigned-import": "off",
-			"import/extensions": "off",
-			"unicorn/string-content": "off",
-			"no-mixed-operators": "off",
-			"node/no-unsupported-features/es-syntax": "off",
-			"@typescript-eslint/prefer-readonly-parameter-types": "off",
-			"@typescript-eslint/restrict-template-expressions": "off"
-		},
-		"settings": {
-			"react": {
-				"version": "16.13"
-			}
-		},
-		"extensions": [
-			"tsx",
-			"ts"
-		],
-		"ignores": [
-			"pages",
-			"babel.config.js",
-			"next.config.js",
-			"public/embed.js"
-		]
-	},
-	"dependencies": {
-		"@tippyjs/react": "^4.1.0",
-		"airly": "^3.1.0",
-		"base64-arraybuffer": "^0.2.0",
-		"color2k": "^1.0.0",
-		"core-js": "^3.6.5",
-		"cors": "^2.8.5",
-		"geodesy": "^2.2.1",
-		"light-date": "^1.1.2",
-		"lodash.debounce": "^4.0.8",
-		"mongodb": "^3.6.1",
-		"nanoid": "^3.1.12",
-		"next": "^9.5.3",
-		"next-translate": "^0.17.2",
-		"nprogress": "^0.2.0",
-		"react": "16.13.1",
-		"react-dom": "16.13.1",
-		"react-hook-form": "^6.7.2",
-		"react-loading-skeleton": "^2.1.1",
-		"react-map-gl": "^5.2.8",
-		"react-simple-img": "^2.3.9",
-		"react-toastify": "^6.0.8",
-		"react-use-web-share": "^1.0.2",
-		"recoil": "0.0.10",
-		"styled-components": "^5.2.0",
-		"tippy.js": "^6.2.6"
-	},
-	"devDependencies": {
-		"@babel/core": "^7.11.6",
-		"@types/cors": "^2.8.7",
-		"@types/geodesy": "^2.2.2",
-		"@types/lodash.debounce": "^4.0.6",
-		"@types/mongodb": "^3.5.27",
-		"@types/nprogress": "^0.2.0",
-		"@types/react": "^16.9.49",
-		"@types/react-map-gl": "^5.2.7",
-		"@types/styled-components": "^5.1.3",
-		"@typescript-eslint/eslint-plugin": "^4.0.1",
-		"@typescript-eslint/parser": "^4.0.1",
-		"babel-plugin-polished": "^1.1.0",
-		"babel-plugin-styled-components": "^1.11.1",
-		"eslint-config-xo-react": "^0.23.0",
-		"eslint-config-xo-typescript": "^0.32.0",
-		"eslint-plugin-react": "^7.20.6",
-		"eslint-plugin-react-hooks": "^4.1.0",
-		"imagemin-mozjpeg": "^9.0.0",
-		"imagemin-svgo": "^8.0.0",
-		"next-offline": "^5.0.2",
-		"next-optimized-images": "^2.6.2",
-		"next-transpile-modules": "^4.1.0",
-		"stylelint": "^13.7.0",
-		"stylelint-config-recommended": "^3.0.0",
-		"type-fest": "^0.16.0",
-		"typescript": "^4.0.2",
-		"xo": "^0.33.1"
-	}
+    "name": "air-radar",
+    "version": "1.0.0",
+    "description": "Generate air quality reports from anywhere in the world and share them with your friends!",
+    "private": true,
+    "scripts": {
+        "build": "next-translate && next build",
+        "dev": "next-translate && next dev",
+        "start": "next start",
+        "test": "xo && stylelint './**/*.ts'"
+    },
+    "engines": {
+        "node": "12.x"
+    },
+    "xo": {
+        "envs": [
+            "node",
+            "browser"
+        ],
+        "extends": [
+            "xo-typescript",
+            "xo-react"
+        ],
+        "rules": {
+            "import/no-unassigned-import": "off",
+            "import/extensions": "off",
+            "unicorn/string-content": "off",
+            "no-mixed-operators": "off",
+            "node/no-unsupported-features/es-syntax": "off",
+            "@typescript-eslint/prefer-readonly-parameter-types": "off",
+            "@typescript-eslint/restrict-template-expressions": "off"
+        },
+        "settings": {
+            "react": {
+                "version": "16.13"
+            }
+        },
+        "extensions": [
+            "tsx",
+            "ts"
+        ],
+        "ignores": [
+            "pages",
+            "babel.config.js",
+            "next.config.js",
+            "public/embed.js"
+        ]
+    },
+    "dependencies": {
+        "@tippyjs/react": "^4.1.0",
+        "airly": "^3.1.0",
+        "base64-arraybuffer": "^0.2.0",
+        "color2k": "^1.1.0",
+        "core-js": "^3.6.5",
+        "cors": "^2.8.5",
+        "geodesy": "^2.2.1",
+        "light-date": "^1.1.3",
+        "lodash.debounce": "^4.0.8",
+        "mongodb": "^3.6.2",
+        "nanoid": "^3.1.12",
+        "next": "^9.5.3",
+        "next-translate": "^0.17.2",
+        "nprogress": "^0.2.0",
+        "react": "16.13.1",
+        "react-dom": "16.13.1",
+        "react-hook-form": "^6.8.2",
+        "react-loading-skeleton": "^2.1.1",
+        "react-map-gl": "^5.2.8",
+        "react-simple-img": "^2.3.9",
+        "react-toastify": "^6.0.8",
+        "react-use-web-share": "^1.0.2",
+        "recoil": "0.0.13",
+        "styled-components": "^5.2.0",
+        "tippy.js": "^6.2.6"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.11.6",
+        "@types/cors": "^2.8.7",
+        "@types/geodesy": "^2.2.2",
+        "@types/lodash.debounce": "^4.0.6",
+        "@types/mongodb": "^3.5.27",
+        "@types/nprogress": "^0.2.0",
+        "@types/react": "^16.9.49",
+        "@types/react-map-gl": "^5.2.7",
+        "@types/styled-components": "^5.1.3",
+        "@typescript-eslint/eslint-plugin": "^4.1.1",
+        "@typescript-eslint/parser": "^4.1.1",
+        "babel-plugin-polished": "^1.1.0",
+        "babel-plugin-styled-components": "^1.11.1",
+        "eslint-config-xo-react": "^0.23.0",
+        "eslint-config-xo-typescript": "^0.32.0",
+        "eslint-plugin-react": "^7.20.6",
+        "eslint-plugin-react-hooks": "^4.1.2",
+        "imagemin-mozjpeg": "^9.0.0",
+        "imagemin-svgo": "^8.0.0",
+        "next-offline": "^5.0.2",
+        "next-optimized-images": "^2.6.2",
+        "next-transpile-modules": "^4.1.0",
+        "stylelint": "^13.7.1",
+        "stylelint-config-recommended": "^3.0.0",
+        "type-fest": "^0.16.0",
+        "typescript": "^4.0.2",
+        "xo": "^0.33.1"
+    }
 }
